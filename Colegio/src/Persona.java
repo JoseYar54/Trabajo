@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+public abstract class Persona {
 
-/**
- *
- * @author User
- */
-public class Persona {
+    private String nombre;
+    private String ap_materno;
+    private String ap_paterno;
+    private int edad;
+    
     
 }
