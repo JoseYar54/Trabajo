@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Docente {
+public class Docente extends Persona{
 
     
     
