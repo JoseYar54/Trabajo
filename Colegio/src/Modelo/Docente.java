@@ -1,7 +1,8 @@
 package Modelo;
 
-public class Docente extends Persona{
+public abstract class Docente extends Persona{
 
+    private int cantHijos;
     
     
 }
