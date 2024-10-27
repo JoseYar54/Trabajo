@@ -8,6 +8,14 @@ public abstract class Persona {
     private String dni;
     private int edad;
 
+    public Persona(String nombre, String ap_materno, String ap_paterno, String dni, int edad) {
+        this.nombre = nombre;
+        this.ap_materno = ap_materno;
+        this.ap_paterno = ap_paterno;
+        this.dni = dni;
+        this.edad = edad;
+    }
+
     public String getNombre() {
         return nombre;
     }

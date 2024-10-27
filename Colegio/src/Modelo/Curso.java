@@ -7,12 +7,13 @@ public class Curso {
     private String nomb_curso;
     private double horasPorClase;
     private ArrayList<Nota> notas;
-    public static int correlativoCurso=100;
+    private static int correlativoCurso=100;
 
     public Curso(String nomb_curso, double horasPorClase) {
         this.nomb_curso = nomb_curso;
         this.horasPorClase = horasPorClase;
         this.cod_Curso=generarCodigoCurso();
+        this.notas=new ArrayList<>();
     }
 
     public String getCod_Curso() {
@@ -49,7 +50,7 @@ public class Curso {
     
     private String generarCodigoCurso(){
         correlativoCurso++;
-        String Codigo="C-"+this.getNomb_curso().substring(0,2)+String.valueOf(correlativoCurso);
+        String Codigo="C-"+this.getNomb_curso().substring(0,3)+String.valueOf(Curso.correlativoCurso);
         return Codigo;
     }
 }
