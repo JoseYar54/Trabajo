@@ -1,8 +1,9 @@
 package Vista;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
@@ -10,29 +11,43 @@ import java.awt.event.MouseEvent;
 
 public class FrmPrincipal extends javax.swing.JFrame {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnIngresar;
+    private javax.swing.JLabel LblContrasenia;
+    private javax.swing.JLabel LblIniciarSesion;
+    private javax.swing.JLabel LblUsuario;
+    private javax.swing.JPanel PnlPanelLateralIzq;
+    private javax.swing.JPanel PnlPanelPrincipal;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblCerrar;
+    private javax.swing.JPasswordField txtCajitaPass;
+    private javax.swing.JTextField txtCajitaUsuario;
+    // End of variables declaration//GEN-END:variables
+    private Dimension d = null;
+
     public FrmPrincipal() {
-        initComponents();
         estilosFrmPrincipaal();
+        initComponents();
+
         estilosBotonCerrar();
         estilosCuadritos();
     }
     
     public void estilosCuadritos(){
-        txtCajitaUsuario.setFont(new java.awt.Font("Carlito", 1, 24)); 
+        txtCajitaUsuario.setFont(new java.awt.Font("Carlito", 1, 24));
         this.txtCajitaUsuario.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (txtCajitaUsuario.getText().isEmpty()!=true) {
-                    txtCajitaUsuario.setText("");
-                    txtCajitaUsuario.setForeground(Color.BLACK);
+                if (!txtCajitaUsuario.getText().isEmpty()) {
+                    setStyle(txtCajitaPass, Color.BLACK, "");
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
                 if (txtCajitaUsuario.getText().isEmpty()) {
-                    txtCajitaUsuario.setForeground(Color.GRAY);
-                    txtCajitaUsuario.setText("Ingrese Usuario");
+                    setStyle(txtCajitaPass, Color.GRAY, "Ingrese usuario");
                 }
             }
         });
@@ -40,24 +55,28 @@ public class FrmPrincipal extends javax.swing.JFrame {
         this.txtCajitaPass.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                if (txtCajitaPass.getText().isEmpty()!=true) {
-                    txtCajitaPass.setText("");
-                    txtCajitaPass.setForeground(Color.BLACK);
+                // getpassword
+                if (!txtCajitaPass.getText().isEmpty()) {
+                    setStyle(txtCajitaPass, Color.BLACK, "");
                 }
             }
 
             @Override
             public void focusLost(FocusEvent e) {
                 if (txtCajitaPass.getText().isEmpty()) {
-                    txtCajitaPass.setForeground(Color.GRAY);
-                    txtCajitaPass.setText("Contraseña");
+                    setStyle(txtCajitaPass, Color.GRAY, "Contraseña");
                 }
             }
         });
     }
+
+    private void setStyle(JTextField textCajita, Color color , String texto){
+        textCajita.setForeground(color);
+        textCajita.setText(texto);
+    }
     
     public void estilosFrmPrincipaal(){
-        Dimension d=Toolkit.getDefaultToolkit().getScreenSize();
+        d=Toolkit.getDefaultToolkit().getScreenSize();
         int alto=(int)(d.height-(d.height*0.25));
         int ancho=(int)(d.width-(d.width*0.25));
         this.setSize(ancho, alto);
@@ -112,7 +131,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         setUndecorated(true);
 
         PnlPanelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-        PnlPanelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PnlPanelPrincipal.setLayout(new AbsoluteLayout());
 
         PnlPanelLateralIzq.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -120,7 +139,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         PnlPanelLateralIzq.setLayout(PnlPanelLateralIzqLayout);
         PnlPanelLateralIzqLayout.setHorizontalGroup(
             PnlPanelLateralIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 320, Short.MAX_VALUE)
+            .addGap(0, (int)(d.width * 0.25), Short.MAX_VALUE)
         );
         PnlPanelLateralIzqLayout.setVerticalGroup(
             PnlPanelLateralIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,17 +245,4 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnIngresar;
-    private javax.swing.JLabel LblContrasenia;
-    private javax.swing.JLabel LblIniciarSesion;
-    private javax.swing.JLabel LblUsuario;
-    private javax.swing.JPanel PnlPanelLateralIzq;
-    private javax.swing.JPanel PnlPanelPrincipal;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblCerrar;
-    private javax.swing.JPasswordField txtCajitaPass;
-    private javax.swing.JTextField txtCajitaUsuario;
-    // End of variables declaration//GEN-END:variables
 }
