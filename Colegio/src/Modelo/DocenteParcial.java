@@ -11,6 +11,7 @@ public class DocenteParcial extends Docente{
         this.pago_por_hora = pago_por_hora;
         this.correlativoDocente++;
         this.setCod_Docente(generarCodigo());
+
     }
 
     public int getHoras_trajadas() {
