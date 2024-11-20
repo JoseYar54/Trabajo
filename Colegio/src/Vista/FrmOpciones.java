@@ -6,10 +6,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class FrmOpciones extends javax.swing.JFrame {
-    private final Color focusColor=new Color(119, 255, 210);
-    private String mainOption="Alumno";
+    private final Color focusColor=new Color(108, 162, 255);
+    private final Color focusSelect=new Color(232,103,89);
+    private String mainOption="";
     
     public FrmOpciones() {
         initComponents();
@@ -17,10 +19,30 @@ public class FrmOpciones extends javax.swing.JFrame {
         iconsOptions();
         interaccionOption();
         styleCloseButtom();
+        mainOptionSelect();
     }
     
     private void mainOptionSelect(){
-        
+        LblAlumnos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                mainOption="Alumno";
+                LblDocentes.setOpaque(false);
+                LblAlumnos.setBackground(focusSelect);
+                LblAlumnos.setOpaque(true);
+                repaint();
+            }
+        });
+        LblDocentes.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                mainOption="Docente";
+                LblAlumnos.setOpaque(false);
+                LblDocentes.setBackground(focusSelect);
+                LblDocentes.setOpaque(true);
+                repaint();
+            }
+        });
     }
     
     /**
@@ -38,7 +60,6 @@ public class FrmOpciones extends javax.swing.JFrame {
         addMouseDecoration(LblAgregar,focusColor);
         addMouseDecoration(LblEditar,focusColor);
         addMouseDecoration(LblEliminar,focusColor);
-        
     }
     
     /**
@@ -48,9 +69,18 @@ public class FrmOpciones extends javax.swing.JFrame {
         LblVisualizar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setVisible(false);
-                FrmVisualizar v=new FrmVisualizar();
-                v.setVisible(true);
+                if (mainOption.equals("Alumno")) {
+                    setVisible(false);
+                    FrmVisualizarAlumnos fva=new FrmVisualizarAlumnos();
+                    fva.setVisible(true);
+                    dispose();
+                }
+                if (mainOption.equals("Docente")) {
+                    setVisible(false);
+                    FrmVisualizarDocente fvd=new FrmVisualizarDocente();
+                    fvd.setVisible(true);
+                    dispose();
+                }
             }
         });
     }

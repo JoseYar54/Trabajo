@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.Alumno;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 
 public class AlumnoController {
 
@@ -38,5 +39,25 @@ public class AlumnoController {
             }
         }
         return null;
+    }
+    
+    public void agregarAlumno(Alumno alumno){
+    if (buscarAlumno(alumno.getDni()) == null) {
+        this.listaAlumnos.add(alumno);
+    } else {
+        JOptionPane.showMessageDialog(null, "Alumno ya existe", "Error", 0);
+        }
+    }
+    
+    public void eliminarAlumno(String dni){
+        Alumno x=buscarAlumno(dni);
+        if (x!=null) {
+            for (Alumno listaAlumno : this.listaAlumnos) {
+                if (x.getDni().equals(listaAlumno.getDni())) {
+                    this.listaAlumnos.remove(x);
+                }
+ 
+            }
+        }
     }
 }
