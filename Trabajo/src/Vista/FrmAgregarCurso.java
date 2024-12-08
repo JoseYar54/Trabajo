@@ -39,12 +39,13 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblFondo = new javax.swing.JPanel();
         pnlPrincipal = new javax.swing.JPanel();
         pnlSuperior = new javax.swing.JPanel();
-        lblCerrar = new javax.swing.JLabel();
         LblOpcion = new javax.swing.JLabel();
         lblMainIcon = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblCerrar = new javax.swing.JLabel();
+        lblMensaje = new javax.swing.JLabel();
         lblNombreCurso = new javax.swing.JLabel();
         txtCajaNombreCurso = new javax.swing.JTextField();
         lblCodigoDocente = new javax.swing.JLabel();
@@ -52,23 +53,18 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         lblNivelAcademico = new javax.swing.JLabel();
         cmbNivelAcademico = new javax.swing.JComboBox<>();
         btnAgregarCurso = new javax.swing.JButton();
-        lblDocente = new javax.swing.JLabel();
-        txtCajaDocente = new javax.swing.JTextField();
-        pnlBorde = new javax.swing.JPanel();
+        lblDocenteAsigando = new javax.swing.JLabel();
+        txtCajaDocenteAsignado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+
+        lblFondo.setBackground(new java.awt.Color(51, 51, 51));
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
         pnlSuperior.setBackground(new java.awt.Color(153, 204, 255));
         pnlSuperior.setRequestFocusEnabled(false);
-
-        lblCerrar.setBackground(new java.awt.Color(153, 204, 255));
-        lblCerrar.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        lblCerrar.setForeground(new java.awt.Color(0, 0, 0));
-        lblCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCerrar.setText("X");
 
         LblOpcion.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         LblOpcion.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,6 +74,12 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         lblMainIcon.setBackground(new java.awt.Color(204, 255, 204));
         lblMainIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        lblCerrar.setBackground(new java.awt.Color(153, 204, 255));
+        lblCerrar.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        lblCerrar.setForeground(new java.awt.Color(0, 0, 0));
+        lblCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCerrar.setText("X");
+
         javax.swing.GroupLayout pnlSuperiorLayout = new javax.swing.GroupLayout(pnlSuperior);
         pnlSuperior.setLayout(pnlSuperiorLayout);
         pnlSuperiorLayout.setHorizontalGroup(
@@ -86,39 +88,37 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblMainIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LblOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(LblOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlSuperiorLayout.setVerticalGroup(
             pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LblOpcion))
-                    .addGroup(pnlSuperiorLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblMainIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LblOpcion)
+                    .addComponent(lblMainIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(lblCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Introduzca datos del Curso:");
+        lblMensaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblMensaje.setForeground(new java.awt.Color(102, 102, 102));
+        lblMensaje.setText("Introduzca Datos para el Curso:");
 
         lblNombreCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblNombreCurso.setForeground(new java.awt.Color(102, 102, 102));
-        lblNombreCurso.setText("Nombre Curso      :");
+        lblNombreCurso.setText("Nombre Curso:");
 
         txtCajaNombreCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCajaNombreCursoCursoActionPerformed(evt);
+                txtCajaNombreCursoActionPerformed(evt);
             }
         });
         txtCajaNombreCurso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCajaNombreCursoCursoKeyTyped(evt);
+                txtCajaNombreCursoKeyTyped(evt);
             }
         });
 
@@ -142,7 +142,7 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
 
         lblNivelAcademico.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblNivelAcademico.setForeground(new java.awt.Color(102, 102, 102));
-        lblNivelAcademico.setText("Nivel Academico  :");
+        lblNivelAcademico.setText("Nivel Academico:");
 
         cmbNivelAcademico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Primaria", "Secundaria" }));
         cmbNivelAcademico.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +154,7 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         btnAgregarCurso.setBackground(new java.awt.Color(163, 156, 218));
         btnAgregarCurso.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
         btnAgregarCurso.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarCurso.setText("AGREGAR CURSO");
+        btnAgregarCurso.setText("AGREGAR ALUMNO");
         btnAgregarCurso.setToolTipText("");
         btnAgregarCurso.setActionCommand("Buscar");
         btnAgregarCurso.setAlignmentY(0.0F);
@@ -167,20 +167,15 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
             }
         });
 
-        lblDocente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblDocente.setForeground(new java.awt.Color(102, 102, 102));
-        lblDocente.setText("Docente: ");
+        lblDocenteAsigando.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblDocenteAsigando.setForeground(new java.awt.Color(102, 102, 102));
+        lblDocenteAsigando.setText("Docente Asiganado:");
 
-        txtCajaDocente.setEditable(false);
-        txtCajaDocente.setFocusable(false);
-        txtCajaDocente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCajaDocenteActionPerformed(evt);
-            }
-        });
-        txtCajaDocente.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCajaDocenteAsignado.setEditable(false);
+        txtCajaDocenteAsignado.setFocusable(false);
+        txtCajaDocenteAsignado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCajaDocenteKeyTyped(evt);
+                txtCajaDocenteAsignadoKeyTyped(evt);
             }
         });
 
@@ -188,40 +183,42 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(15, 15, 15)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(43, 43, 43))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnAgregarCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblCodigoDocente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblDocente)))
-                                    .addComponent(lblNivelAcademico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblNombreCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbNivelAcademico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtCajaNombreCurso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(txtCajaCodigoDocente, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtCajaDocente, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addContainerGap())))
+                        .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblCodigoDocente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblNombreCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblDocenteAsigando, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblNivelAcademico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtCajaNombreCurso)
+                                .addComponent(txtCajaCodigoDocente)
+                                .addComponent(cmbNivelAcademico, javax.swing.GroupLayout.Alignment.TRAILING, 0, 186, Short.MAX_VALUE))
+                            .addComponent(txtCajaDocenteAsignado))
+                        .addGap(17, 17, 17))))
+            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAgregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                .addComponent(pnlSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCajaNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,53 +228,122 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
                     .addComponent(txtCajaCodigoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCajaDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDocenteAsigando, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCajaDocenteAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNivelAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbNivelAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAgregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout lblFondoLayout = new javax.swing.GroupLayout(lblFondo);
+        lblFondo.setLayout(lblFondoLayout);
+        lblFondoLayout.setHorizontalGroup(
+            lblFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblFondoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        pnlBorde.setBackground(new java.awt.Color(51, 51, 51));
-
-        javax.swing.GroupLayout pnlBordeLayout = new javax.swing.GroupLayout(pnlBorde);
-        pnlBorde.setLayout(pnlBordeLayout);
-        pnlBordeLayout.setHorizontalGroup(
-            pnlBordeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-        );
-        pnlBordeLayout.setVerticalGroup(
-            pnlBordeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        lblFondoLayout.setVerticalGroup(
+            lblFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblFondoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlBorde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(lblFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlBorde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(lblFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtCajaDocenteAsignadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaDocenteAsignadoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCajaDocenteAsignadoKeyTyped
+
+    private Docente obtenerDocente(String Codigo){
+        return DataController.docenteController.buscarDocenteCOD(Codigo);
+                
+    }
+    
+    private void btnAgregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCursoActionPerformed
+        try{
+            String nombCurso=obtenerNombreCurso();
+            String codDocente=obtenerCodigoDocente();
+            String nivel=obtenerNivelAcademico();
+            
+            Docente docente=obtenerDocente(codDocente);
+            Curso curso=new Curso(nombCurso, docente);
+            
+            curso.setNivelAcademico(nivel);
+            
+            
+            
+            DataController.cursoController.agregarCurso(curso);
+            LogicTools.sendMessage("Curso registrado correctamente :D");
+            LogicTools.sendMessage("El codigo del Curso es: "+curso.getCod_Curso());
+            limpiarCajas();
+            DataTools.writeDocData(DataController.cursoController);
+            DataController.recargarDatosCursos();;
+            setVisible(false);
+            dispose();
+        }catch(Exception e){
+            LogicTools.sendMessage("Error al registrar al alumno"+e.getMessage());
+            limpiarCajas();
+        }
+    }//GEN-LAST:event_btnAgregarCursoActionPerformed
+
+    private void cmbNivelAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNivelAcademicoActionPerformed
+    }//GEN-LAST:event_cmbNivelAcademicoActionPerformed
+
+    private void txtCajaCodigoDocenteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaCodigoDocenteKeyTyped
+        LogicTools.setMaxSize(evt, txtCajaCodigoDocente, 4);
+    }//GEN-LAST:event_txtCajaCodigoDocenteKeyTyped
+
+    private void txtCajaCodigoDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajaCodigoDocenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCajaCodigoDocenteActionPerformed
+
+    private void txtCajaNombreCursoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaNombreCursoKeyTyped
+        LogicTools.setOnlyChars(evt, txtCajaNombreCurso, 18);
+    }//GEN-LAST:event_txtCajaNombreCursoKeyTyped
+
+    private void txtCajaNombreCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajaNombreCursoActionPerformed
+
+    }//GEN-LAST:event_txtCajaNombreCursoActionPerformed
+
+    private String devolverDatosDocente(String codDocente) {
+        Docente docente = DataController.docenteController.buscarDocenteCOD(codDocente);
+        if (docente != null) {
+            return docente.getNombre() + " " + docente.getAp_paterno() + " " + docente.getAp_materno();
+        } else {
+            return "Docente no encontrado";
+        }
+    }
+    
+    private void txtCajaCodigoDocenteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaCodigoDocenteKeyReleased
+        if (txtCajaCodigoDocente.getText().length() == 4) {
+                String codDocente = txtCajaCodigoDocente.getText().toUpperCase();
+                String datosDocente = devolverDatosDocente(codDocente);
+
+                txtCajaDocenteAsignado.setText(datosDocente);
+        } else {
+            txtCajaDocenteAsignado.setText("");
+        }
+    }//GEN-LAST:event_txtCajaCodigoDocenteKeyReleased
 
     private String obtenerNombreCurso(){
         return txtCajaNombreCurso.getText();
@@ -287,109 +353,40 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         return txtCajaCodigoDocente.getText();
     }
     
-    private String obtenerNivel(){
+    private String obtenerNivelAcademico(){
         return (String)cmbNivelAcademico.getSelectedItem();
     }
     
-    private void btnAgregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCursoActionPerformed
-        try{
-            String nombCurso=obtenerNombreCurso();
-            String codDocente=obtenerCodigoDocente();
-            String nivel=obtenerNivel();
-            
-            Docente docente=DataController.docenteController.buscarDocente(codDocente);
-            
-            Curso curso=new Curso(nombCurso, docente);
-            
-            curso.setNivelAcademico(nivel);
-                
-            DataController.cursoController.agregarCurso(curso);
-            LogicTools.sendMessage("Alumno registrado correctamente :D");
-            LogicTools.sendMessage("El codigo del Curso es: "+curso.getCod_Curso());
-            limpiarCajas();
-            DataTools.writeDocData(DataController.alumnoController);
-            setVisible(false);
-            dispose();
-        }catch(Exception e){
-            LogicTools.sendMessage("Error al registrar al alumno");
-            limpiarCajas();
-        }
-    }//GEN-LAST:event_btnAgregarCursoActionPerformed
     private void setInputDecoration(){
         int tamanio=12;
-        LogicTools.setStyleInput(txtCajaNombreCurso, "Ingresa Nombre del Curso", tamanio);
-        LogicTools.setStyleInput(txtCajaCodigoDocente, "Ingresa docente a asignar",tamanio);
-        LogicTools.setStyleInput(txtCajaDocente, "Docente asginado", tamanio);
+        LogicTools.setStyleInput(txtCajaNombreCurso, "Ingresa un Nombre", tamanio);
+        LogicTools.setStyleInput(txtCajaCodigoDocente, "Ingresa apellido paterno",tamanio);
+        LogicTools.setStyleInput(txtCajaDocenteAsignado, "Ingresa apellido materno", tamanio);
     }
     
     private void limpiarCajas(){
-        txtCajaDocente.setText("");
+        txtCajaDocenteAsignado.setText("");
         txtCajaCodigoDocente.setText("");
         txtCajaNombreCurso.setText("");
+        cmbNivelAcademico.setSelectedItem("-");
     }
     
-    private void txtCajaNombreCursoCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajaNombreCursoCursoActionPerformed
-    }//GEN-LAST:event_txtCajaNombreCursoCursoActionPerformed
-
-    private void txtCajaCodigoDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajaCodigoDocenteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCajaCodigoDocenteActionPerformed
-
-    private void cmbNivelAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNivelAcademicoActionPerformed
-    }//GEN-LAST:event_cmbNivelAcademicoActionPerformed
-
-    private void txtCajaNombreCursoCursoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaNombreCursoCursoKeyTyped
-        LogicTools.setOnlyChars(evt, txtCajaNombreCurso, 22);
-    }//GEN-LAST:event_txtCajaNombreCursoCursoKeyTyped
-
-   private String devolverDatosDocente(String codDocente) {
-        Docente docente = DataController.docenteController.buscarDocenteCOD(codDocente);
-        if (docente != null) {
-            return docente.getNombre() + " " + docente.getAp_paterno() + " " + docente.getAp_materno();
-        } else {
-            return "Docente no encontrado";
-        }
-}
-    
-    private void txtCajaCodigoDocenteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaCodigoDocenteKeyTyped
-        LogicTools.setMaxSize(evt, txtCajaCodigoDocente,4);
-    }//GEN-LAST:event_txtCajaCodigoDocenteKeyTyped
-
-    private void txtCajaDocenteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaDocenteKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCajaDocenteKeyTyped
-
-    private void txtCajaDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajaDocenteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCajaDocenteActionPerformed
-
-    private void txtCajaCodigoDocenteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaCodigoDocenteKeyReleased
-        if (txtCajaCodigoDocente.getText().length() == 4) {
-                String codDocente = txtCajaCodigoDocente.getText().toUpperCase();
-                String datosDocente = devolverDatosDocente(codDocente);
-
-                txtCajaDocente.setText(datosDocente);
-        } else {
-            txtCajaDocente.setText("");
-        }
-    }//GEN-LAST:event_txtCajaCodigoDocenteKeyReleased
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblOpcion;
     private javax.swing.JButton btnAgregarCurso;
     private javax.swing.JComboBox<String> cmbNivelAcademico;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblCodigoDocente;
-    private javax.swing.JLabel lblDocente;
+    private javax.swing.JLabel lblDocenteAsigando;
+    private javax.swing.JPanel lblFondo;
     private javax.swing.JLabel lblMainIcon;
+    private javax.swing.JLabel lblMensaje;
     private javax.swing.JLabel lblNivelAcademico;
     private javax.swing.JLabel lblNombreCurso;
-    private javax.swing.JPanel pnlBorde;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JPanel pnlSuperior;
     private javax.swing.JTextField txtCajaCodigoDocente;
-    private javax.swing.JTextField txtCajaDocente;
+    private javax.swing.JTextField txtCajaDocenteAsignado;
     private javax.swing.JTextField txtCajaNombreCurso;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,8 +27,10 @@ public class CursoController {
     }
     
     public void agregarCurso(Curso curso){
-        curso.setCod_Curso(curso.generarCodigoCurso(cantidadCursos()+1));
-        this.listaCursos.add(curso);
+        if (buscarCurso(curso.getCod_Curso())== null) {
+            curso.setCod_Curso(curso.generarCodigoCurso(cantidadCursos()+1));
+            listaCursos.add(curso);
+        }
     }
     
     public void eliminarCurso(String codigoCurso){

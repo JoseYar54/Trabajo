@@ -1,0 +1,35 @@
+C001-Aritmética-Primaria-D001
+C002-Trigonometría-Secundaria-D002
+C003-Álgebra-Primaria-D003
+C004-Geometría-Primaria-D004
+C005-R. Matemático-Secundaria-D005
+C006-F. Elemental-Primaria-D006
+C007-C. Lingüística-Secundaria-D007
+C008-Gramática-Primaria-D008
+C009-Literatura-Secundaria-D001
+C010-A. Verbal-Primaria-D002
+C011-Química-Secundaria-D003
+C012-Biología-Primaria-D004
+C013-Historia-Secundaria-D005
+C014-Geografía-Primaria-D006
+C015-Inglés-Primaria-D007
+C016-Computación-Secundaria-D008
+C017-E. Física-Secundaria-D001
+C018-Valores-Primaria-D002
+C019-Aritmética-Secundaria-D003
+C020-Trigonometría-Secundaria-D004
+C021-Álgebra-Primaria-D005
+C022-Geometría-Secundaria-D006
+C023-R. Matemático-Primaria-D007
+C024-F. Elemental-Secundaria-D008
+C025-C. Lingüística-Primaria-D001
+C026-Gramática-Secundaria-D002
+C027-Literatura-Primaria-D003
+C028-A. Verbal-Secundaria-D004
+C029-Química-Primaria-D005
+C030-Biología-Secundaria-D006
+C031-Historia-Primaria-D007
+C032-Geografía-Secundaria-D008
+C033-Inglés-Secundaria-D001
+C034-Computación-Primaria-D002
+C035-Valores-Secundaria-D003

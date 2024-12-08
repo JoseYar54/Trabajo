@@ -63,7 +63,6 @@ public class FrmMenuCursos extends javax.swing.JFrame {
             public void mouseClicked(MouseEvent e) {   
                 FrmAgregarCurso  frmAgregarCurso=new FrmAgregarCurso();
                 frmAgregarCurso.setVisible(true);
-                dispose();
             }
         });
         

@@ -84,7 +84,7 @@ public class FrmElector extends javax.swing.JFrame {
                     dispose();
                 }
                 if(opcion.equals("Agregar")){
-                    FrmAgregarDocente frmAgregarDocente=new FrmAgregarDocente(DataController.docenteController);
+                    FrmAgregarDocente frmAgregarDocente=new FrmAgregarDocente();
                     frmAgregarDocente.setVisible(true);
                     setVisible(false);
                     dispose();

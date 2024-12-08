@@ -1,6 +1,5 @@
 package Vista;
 
-import Controlador.DocenteController;
 import Modelo.Docente;
 import Tools.DataTools;
 import Tools.IconTools;
@@ -10,7 +9,7 @@ import java.awt.event.MouseEvent;
 import Controlador.DataController;
 
 public class FrmAgregarDocente extends javax.swing.JFrame {
-    public FrmAgregarDocente(DocenteController d) {
+    public FrmAgregarDocente() {
         initComponents();
         LogicTools.styleMainFrame(this);
         LogicTools.styleCloseButtom(lblCerrar,IconTools.colorPnls);

@@ -178,6 +178,7 @@ public class DataTools {
         }
         pw.close();
         }catch(Exception e){
+            System.out.println(cursoController.cantidadCursos());
             LogicTools.sendMessage("Error al grabar el archivo local Cursos");
         }
      }
