@@ -7,20 +7,22 @@ public class Alumno extends Persona{
 
     private String cod_alumno;
     private String nivel_academico;
-    private String seccion;
     private int grado;
+    private String seccion;
+    private String observacion="Sin observaciones";
+    
     private ArrayList<Curso> cursos;
-    private static int correlativoAlumno=100;
-    private String observacion;
 
-    public Alumno(String nivel_academico, String seccion, int grado, String nombre, String ap_materno, String ap_paterno, String dni, int edad) {
-        super(nombre, ap_materno, ap_paterno, dni, edad);
-        this.cod_alumno = generarCodigo();
+    public Alumno(String nivel_academico, String seccion, int grado, String nombre, String ap_materno, String ap_paterno, String dni) {
+        super(nombre, ap_materno, ap_paterno, dni);
         this.nivel_academico = nivel_academico;
         this.seccion = seccion;
         this.grado = grado;
         this.cursos = new ArrayList<>();
-        correlativoAlumno++;
+    }
+    
+    public void agregarCurso(Curso curso){
+        this.cursos.add(curso);
     }
     
     public String getCod_alumno() {
@@ -85,8 +87,9 @@ public class Alumno extends Persona{
         return m;
     }
     @Override
-    public String generarCodigo() {
-        return "A"+this.getDni().substring(0, 2)+String.valueOf(Alumno.correlativoAlumno);
+    public String generarCodigo(int correlativo) {
+        String ultimoCorrelativo="00000"+String.valueOf(correlativo);
+        return "A"+ultimoCorrelativo.substring(ultimoCorrelativo.length()-3);
     }
 
     @Override

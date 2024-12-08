@@ -1,46 +1,41 @@
 package Vista;
 
-import Controlador.AlumnoController;
+import Controlador.DataController;
 import Modelo.Alumno;
-import java.awt.Color;
+import Tools.DataTools;
+import Tools.IconTools;
+import Tools.LogicTools;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JOptionPane;
+import java.util.HashSet;
 
 public class FrmVisualizarAlumnos extends javax.swing.JFrame {
-    private AlumnoController c=new AlumnoController();
-    
     public FrmVisualizarAlumnos() {
         initComponents();
-        styleCloseButtom();
-        FrmPrinci.styleMainFrame(this);
+        addStyleIconTools();
+        addLogicCloseButtom();
+        imprimirDatos();
     }
     
-    private void styleCloseButtom(){
-        this.lblCerrar.setOpaque(true);
-        this.lblCerrar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                lblCerrar.setBackground(new Color(222,92,92));
-                lblCerrar.setForeground(new Color(255,255,255));
-            }
-            
-            @Override
-            public void mouseExited(MouseEvent e) {
-                lblCerrar.setBackground(new Color(153,204,255));
-                lblCerrar.setForeground(new Color(0,0,0));
-            }
-
+    private void addLogicCloseButtom(){
+        lblCerrar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                
-                FrmOpciones c=new FrmOpciones();
                 setVisible(false);
-                c.setVisible(true);
-                dispose();
+                FrmMenuPersona frmMenuPersona=new FrmMenuPersona();
+                frmMenuPersona.setVisible(true);
+                dispose(); 
             }
         });
-        
+    }
+    
+    private void addStyleIconTools(){
+        LogicTools.styleMainFrame(this);
+        setBackground(IconTools.colorPnlPrinci);
+        PnlCeleste.setBackground(IconTools.colorPnls);
+        IconTools.addIconOption(lblMainIcon,"img/icon.png");
+        IconTools.addIconOption(lblCerrar,"img/return1.png");
+        IconTools.addMouseDecoration(lblCerrar,"img/return2.png","img/return1.png");
     }
     
     @SuppressWarnings("unchecked")
@@ -51,9 +46,9 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
         PnlCeleste = new javax.swing.JPanel();
         lblCerrar = new javax.swing.JLabel();
         LblOpcion = new javax.swing.JLabel();
+        lblMainIcon = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtCaja = new javax.swing.JTextArea();
-        btnBuscarAlumnos = new javax.swing.JButton();
         btnVerAlumnos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtCajaCodigo = new javax.swing.JTextField();
@@ -71,6 +66,9 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
         cmbGrado = new javax.swing.JComboBox<>();
         cmbNivel = new javax.swing.JComboBox<>();
         cmbSeccion = new javax.swing.JComboBox<>();
+        btnBuscar = new javax.swing.JButton();
+        lblDNI = new javax.swing.JLabel();
+        txtCajaDNI = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -81,14 +79,15 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
 
         lblCerrar.setBackground(new java.awt.Color(153, 204, 255));
         lblCerrar.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        lblCerrar.setForeground(new java.awt.Color(0, 0, 0));
         lblCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCerrar.setText("X");
 
         LblOpcion.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        LblOpcion.setForeground(new java.awt.Color(102, 102, 102));
+        LblOpcion.setForeground(new java.awt.Color(255, 255, 255));
         LblOpcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LblOpcion.setText("VISUALIZAR ALUMNOS");
+        LblOpcion.setText("BUSCAR ALUMNOS");
+
+        lblMainIcon.setBackground(new java.awt.Color(204, 255, 204));
+        lblMainIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout PnlCelesteLayout = new javax.swing.GroupLayout(PnlCeleste);
         PnlCeleste.setLayout(PnlCelesteLayout);
@@ -96,17 +95,22 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
             PnlCelesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnlCelesteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LblOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(654, 654, 654)
-                .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblMainIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(LblOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addGap(486, 486, 486)
+                .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         PnlCelesteLayout.setVerticalGroup(
             PnlCelesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlCelesteLayout.createSequentialGroup()
-                .addGroup(PnlCelesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LblOpcion))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(PnlCelesteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblMainIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblOpcion)
+                    .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         txtCaja.setEditable(false);
@@ -114,22 +118,6 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
         txtCaja.setRows(5);
         txtCaja.setCaretColor(new java.awt.Color(204, 255, 255));
         jScrollPane1.setViewportView(txtCaja);
-
-        btnBuscarAlumnos.setBackground(new java.awt.Color(163, 156, 218));
-        btnBuscarAlumnos.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
-        btnBuscarAlumnos.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarAlumnos.setText("Buscar Alumno");
-        btnBuscarAlumnos.setToolTipText("");
-        btnBuscarAlumnos.setActionCommand("Buscar");
-        btnBuscarAlumnos.setAlignmentY(0.0F);
-        btnBuscarAlumnos.setBorder(null);
-        btnBuscarAlumnos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBuscarAlumnos.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnBuscarAlumnos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarAlumnosActionPerformed(evt);
-            }
-        });
 
         btnVerAlumnos.setBackground(new java.awt.Color(163, 156, 218));
         btnVerAlumnos.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
@@ -150,9 +138,15 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Código:");
 
+        txtCajaCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCajaCodigoKeyTyped(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("BUSQUEDA PERSONALIZADA:");
+        jLabel2.setText("BUSQUEDA DE ALUMNO PERSONALIZADA:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
@@ -162,13 +156,31 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Nombre:");
 
+        txtCajaNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCajaNombreKeyTyped(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("A. Paterno:");
 
+        txtCajaApPaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCajaApPaternoKeyTyped(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("A. Materno: ");
+
+        txtCajaApMaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCajaApMaternoKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
@@ -182,52 +194,90 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("Sección:");
 
+        cmbGrado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "1", "2", "3", "4", "5", "6" }));
+        cmbGrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGradoActionPerformed(evt);
+            }
+        });
+
         cmbNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Primaria", "Secundaria" }));
+        cmbNivel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbNivelActionPerformed(evt);
+            }
+        });
+
+        cmbSeccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "A", "B", "C", "D" }));
+
+        btnBuscar.setBackground(new java.awt.Color(163, 156, 218));
+        btnBuscar.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.setToolTipText("");
+        btnBuscar.setActionCommand("Buscar");
+        btnBuscar.setAlignmentY(0.0F);
+        btnBuscar.setBorder(null);
+        btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBuscar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        lblDNI.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblDNI.setForeground(new java.awt.Color(102, 102, 102));
+        lblDNI.setText("DNI: ");
+
+        txtCajaDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCajaDNIKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PnlCeleste, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVerAlumnos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscarAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCajaApMaterno, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(txtCajaCodigo)
-                            .addComponent(txtCajaNombre)
-                            .addComponent(txtCajaApPaterno)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDNI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addComponent(txtCajaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCajaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCajaApPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCajaApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCajaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnVerAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(30, 30, 30)))
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(58, 58, 58)))
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(PnlCeleste, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +285,6 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
                 .addComponent(PnlCeleste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
@@ -258,7 +307,11 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCajaApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCajaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -271,9 +324,11 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnBuscarAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,33 +345,124 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Esta mamada se cambiará cuando termine el front :'v
-    */
-    private void btnBuscarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAlumnosActionPerformed
-        String dni=JOptionPane.showInputDialog(null, "Ingresa DNI");
-        txtCaja.setText("");
-        txtCaja.setText("Codigo\tNombre\tAp. Paterno\tAp.Materno\tDNI\tEdad\tNivel\tGrado\tSección\n");
-        Alumno a=c.buscarAlumno(dni);
-            txtCaja.append(a.getCod_alumno()+"\t"+a.getNombre()+"\t"+a.getAp_paterno()+"\t"+a.getAp_materno()+"\t"+
-            a.getDni()+"\t"+a.getEdad()+"\t"+a.getNivel_academico()+"\t"+a.getGrado()+"\t"+a.getSeccion());
-            txtCaja.append("\n");
-    }//GEN-LAST:event_btnBuscarAlumnosActionPerformed
-
     private void btnVerAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerAlumnosActionPerformed
+        DataTools.writeDocData(DataController.alumnoController);
         imprimirDatos();
     }//GEN-LAST:event_btnVerAlumnosActionPerformed
 
+    private void txtCajaCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaCodigoKeyTyped
+        
+    }//GEN-LAST:event_txtCajaCodigoKeyTyped
+
+    private void txtCajaNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaNombreKeyTyped
+        LogicTools.setOnlyChars(evt, txtCajaNombre, 20);
+    }//GEN-LAST:event_txtCajaNombreKeyTyped
+
+    private void txtCajaApPaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaApPaternoKeyTyped
+        LogicTools.setOnlyChars(evt, txtCajaApPaterno, 20);
+    }//GEN-LAST:event_txtCajaApPaternoKeyTyped
+
+    private void txtCajaApMaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaApMaternoKeyTyped
+        LogicTools.setOnlyChars(evt, txtCajaApMaterno, 20);
+    }//GEN-LAST:event_txtCajaApMaternoKeyTyped
+
+    private String recibirNivel(){
+        return (String)cmbNivel.getSelectedItem();
+    }
+    
+    private String recibirSeccion(){
+        return (String)cmbSeccion.getSelectedItem();
+    }
+    
+    private int recibirGrado(){
+        return Integer.parseInt((String)cmbGrado.getSelectedItem());
+    }
+    
+    private String recibirNombre(){
+        return txtCajaNombre.getText();
+    }
+    
+    private String recibirApPa(){
+        return txtCajaApPaterno.getText();
+    }
+    
+    private String recibirApMa(){
+        return txtCajaApMaterno.getText();
+    }
+    
+    private String recibirDni(){
+        return txtCajaDNI.getText();
+    }
+    
+    private String recibirCodigo(){
+        return txtCajaCodigo.getText();
+    }
+    
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        Integer grado=0;
+        try {
+            String codigo = recibirCodigo();
+            String nivel = recibirNivel();
+            String seccion = recibirSeccion();
+            try {
+                grado = recibirGrado();
+            } catch (Exception e) {
+                System.out.println("Se controlo el error");
+            }
+            String nombre = recibirNombre();
+            String apPaterno = recibirApPa();
+            String apMaterno = recibirApMa();
+            String dni = recibirDni();
+            limpiarCajas();
+            
+            HashSet<Alumno> busquedaFiltrada=DataController.alumnoController.buscarAlumnos(codigo,nombre, apPaterno, apMaterno,dni,nivel, seccion, grado);
+            txtCaja.setText("");
+            txtCaja.setText("Codigo\tNombre\tAp. Paterno\tAp.Materno\tDNI\tNivel\tGrado\tSección\n");
+            for (Alumno alumno : busquedaFiltrada) {
+                txtCaja.append(alumno.getCod_alumno()+"\t"+alumno.getNombre()+"\t"+alumno.getAp_paterno()+"\t"+alumno.getAp_materno()
+                +"\t"+alumno.getDni()+"\t"+alumno.getNivel_academico()+"\t"+alumno.getGrado()+"\t"+alumno.getSeccion());
+                txtCaja.append("\n");
+            }
+        
+        } catch (Exception e) {
+        LogicTools.sendMessage("Error al buscar alumno: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void limpiarCajas(){
+        txtCajaApMaterno.setText("");
+        txtCajaApPaterno.setText("");
+        txtCajaCodigo.setText("");
+        txtCajaDNI.setText("");
+        txtCajaNombre.setText("");
+        cmbGrado.setSelectedItem("-");
+        cmbSeccion.setSelectedItem("-");
+        cmbNivel.setSelectedItem("-");
+    }
+    
+    private void cmbGradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGradoActionPerformed
+        
+        
+    }//GEN-LAST:event_cmbGradoActionPerformed
+
+    private void cmbNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNivelActionPerformed
+        LogicTools.setLogicCmbBoxGradoAlum(cmbGrado, cmbNivel);
+    }//GEN-LAST:event_cmbNivelActionPerformed
+
+    private void txtCajaDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaDNIKeyTyped
+        LogicTools.setOnlyNumbers(evt, txtCajaDNI, 8);
+    }//GEN-LAST:event_txtCajaDNIKeyTyped
+    
     /**
      * Metodo provisional para ver los datos xd
     */
     private void imprimirDatos(){
         txtCaja.setText("");
-        txtCaja.setText("Codigo\tNombre\tAp. Paterno\tAp.Materno\tDNI\tEdad\tNivel\tGrado\tSección\n");
+        txtCaja.setText("Codigo\tNombre\tAp. Paterno\tAp.Materno\tDNI\tNivel\tGrado\tSección\n");
         
-        for (Alumno a: c.getListaAlumnos()) {
-            txtCaja.append(a.getCod_alumno()+"\t"+a.getNombre()+"\t"+a.getAp_paterno()+"\t"+a.getAp_materno()+"\t"+
-            a.getDni()+"\t"+a.getEdad()+"\t"+a.getNivel_academico()+"\t"+a.getGrado()+"\t"+a.getSeccion());
+        for (Alumno alumno: DataController.alumnoController.getListaAlumnos()) {
+            txtCaja.append(alumno.getCod_alumno()+"\t"+alumno.getNombre()+"\t"+alumno.getAp_paterno()+"\t"+alumno.getAp_materno()+"\t"+
+            alumno.getDni()+"\t"+alumno.getNivel_academico()+"\t"+alumno.getGrado()+"\t"+alumno.getSeccion());
             txtCaja.append("\n");
         }
     }
@@ -324,7 +470,7 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblOpcion;
     private javax.swing.JPanel PnlCeleste;
-    private javax.swing.JButton btnBuscarAlumnos;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnVerAlumnos;
     private javax.swing.JComboBox<String> cmbGrado;
     private javax.swing.JComboBox<String> cmbNivel;
@@ -340,11 +486,14 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCerrar;
+    private javax.swing.JLabel lblDNI;
+    private javax.swing.JLabel lblMainIcon;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JTextArea txtCaja;
     private javax.swing.JTextField txtCajaApMaterno;
     private javax.swing.JTextField txtCajaApPaterno;
     private javax.swing.JTextField txtCajaCodigo;
+    private javax.swing.JTextField txtCajaDNI;
     private javax.swing.JTextField txtCajaNombre;
     // End of variables declaration//GEN-END:variables
 }

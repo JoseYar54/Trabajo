@@ -1,7 +1,9 @@
 package Controlador;
 
 import Modelo.Alumno;
+import Modelo.Curso;
 import java.util.HashSet;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 public class AlumnoController {
@@ -10,27 +12,22 @@ public class AlumnoController {
 
     public AlumnoController() {
         this.listaAlumnos = new HashSet<>();
-        Alumno alumno1 = new Alumno("Secundaria", "C", 2, "Jordy", "De la Cruz", "Yarleque", "77794489", 22);
-        Alumno alumno2 = new Alumno("Primaria", "A", 3, "Maria", "Lopez", "Santos", "88832211", 10);
-        Alumno alumno3 = new Alumno("Secundaria", "B", 5, "Carlos", "Perez", "Gutierrez", "99941122", 15);
-        Alumno alumno4 = new Alumno("Primaria", "D", 1, "Lucia", "Fernandez", "Rios", "66623344", 8);
-        
-        listaAlumnos.add(alumno1);
-        listaAlumnos.add(alumno2);
-        listaAlumnos.add(alumno3);
-        listaAlumnos.add(alumno4);
     }
 
     public HashSet<Alumno> getListaAlumnos() {
         return listaAlumnos;
     }
 
+    public int cantidadAlumnos(){
+        return listaAlumnos.size();
+    }
+    
     public void setListaAlumnos(HashSet<Alumno> listaAlumnos) {
         this.listaAlumnos = listaAlumnos;
     }
     
     /**
-     * Buscar Alumno
+     * Busqueda directa de alumno
     */
     public Alumno buscarAlumno(String dni){
         for (Alumno listaAlumno : listaAlumnos) {
@@ -41,23 +38,109 @@ public class AlumnoController {
         return null;
     }
     
+    /**
+     * Busqueda multiple de alumnos
+    */
+    public HashSet<Alumno> buscarAlumnos(
+        String codigo, String nombre, String apPaterno, String apMaterno, 
+        String dni,String nivelAcademico, String seccion, Integer grado) {
+
+    HashSet<Alumno> resultado = new HashSet<>();
+    boolean coincidencia = false;
+    for (Alumno alumno : listaAlumnos) {
+        coincidencia = false;
+        if (codigo != null && (alumno.getCod_alumno().equalsIgnoreCase(codigo))) {
+            coincidencia = true;
+        }
+
+        if (nombre != null && (alumno.getNombre().equalsIgnoreCase(nombre))) {
+            coincidencia = true;
+        }
+
+        if (apPaterno != null && (alumno.getAp_paterno().equalsIgnoreCase(apPaterno))){
+            coincidencia = true;
+        }
+
+        if (apMaterno != null && alumno.getAp_materno().equalsIgnoreCase(apMaterno)) {
+            coincidencia = true;
+        }
+
+        if (nivelAcademico != null && alumno.getNivel_academico().equalsIgnoreCase(nivelAcademico)) {
+            coincidencia = true;
+        }
+
+        if (seccion != null && alumno.getSeccion().equalsIgnoreCase(seccion)) {
+            coincidencia = true;
+        }
+
+        if (grado != null && alumno.getGrado() == grado) {
+            coincidencia = true;
+        }
+        
+        if (dni != null && alumno.getDni().equals(dni)) {
+            coincidencia = true;
+        }
+
+        if (coincidencia) {
+            resultado.add(alumno);
+        }
+    }
+        if (resultado.size()==0) {
+            JOptionPane.showMessageDialog(null,"Busqueda sin coincidencia","Adventencia",2,null);
+        }
+    return resultado;
+}
+    
+    /**
+     * Agregar Alumno
+    */
     public void agregarAlumno(Alumno alumno){
-    if (buscarAlumno(alumno.getDni()) == null) {
-        this.listaAlumnos.add(alumno);
-    } else {
-        JOptionPane.showMessageDialog(null, "Alumno ya existe", "Error", 0);
+        if (buscarAlumno(alumno.getDni()) == null) {
+            alumno.setCod_alumno(alumno.generarCodigo(cantidadAlumnos()+1));
+            this.listaAlumnos.add(alumno);
         }
     }
     
-    public void eliminarAlumno(String dni){
-        Alumno x=buscarAlumno(dni);
-        if (x!=null) {
-            for (Alumno listaAlumno : this.listaAlumnos) {
+    /**
+     * Editar Alumno
+    */
+    public void editarAlumno(Alumno alumnoBuscado,Alumno alumnoNuevo){
+        if (listaAlumnos.contains(alumnoBuscado)) {
+            listaAlumnos.remove(alumnoBuscado);
+            alumnoNuevo.setCod_alumno(alumnoNuevo.generarCodigo(cantidadAlumnos()+1));
+            listaAlumnos.add(alumnoNuevo);
+    }
+    }
+    
+    /**
+     * Eliminar Alumno
+    */
+    public void eliminarAlumno(String dni) {
+        Alumno x = buscarAlumno(dni);
+        if (x != null) {
+            Iterator<Alumno> iterador = this.listaAlumnos.iterator();
+            while (iterador.hasNext()) {
+                Alumno listaAlumno = iterador.next();
                 if (x.getDni().equals(listaAlumno.getDni())) {
-                    this.listaAlumnos.remove(x);
+                    iterador.remove();
+                    break;
                 }
- 
             }
+        }
+    }
+    
+    /**
+     * Mostrar alumnos
+     */
+    public void mostrarAlumnos(){
+        for (Alumno listaAlumno : listaAlumnos) {
+            System.out.println(listaAlumno.detallesPersona());
+        }
+    }
+    
+    public void asignarCurso(String dni,Curso curso){
+        for (Alumno listaAlumno : listaAlumnos) {
+            
         }
     }
 }

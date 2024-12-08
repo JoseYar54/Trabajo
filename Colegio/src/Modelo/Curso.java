@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class Curso {
     private String cod_Curso;
-    private String nomb_curso;
-    private double horasPorClase;
-    private ArrayList<Nota> notas;
-    private static int correlativoCurso=100;
+    private String nombcurso;
+    private String nivelAcademico;
+    
+    private Docente docente;
+    private ArrayList<Matricula> alumnosInscritos; 
 
-    public Curso(String nomb_curso, double horasPorClase) {
-        this.nomb_curso = nomb_curso;
-        this.horasPorClase = horasPorClase;
-        this.cod_Curso=generarCodigoCurso();
-        this.notas=new ArrayList<>();
+    public Curso(String nomb_curso, Docente docente) {
+        this.nombcurso = nomb_curso;
+        this.docente = docente;
+        this.alumnosInscritos = new ArrayList<>();
     }
 
     public String getCod_Curso() {
@@ -24,33 +24,44 @@ public class Curso {
         this.cod_Curso = cod_Curso;
     }
 
-    public String getNomb_curso() {
-        return nomb_curso;
+    public String getNombcurso() {
+        return nombcurso;
     }
 
-    public void setNomb_curso(String nomb_curso) {
-        this.nomb_curso = nomb_curso;
+    public void setNombcurso(String nombcurso) {
+        this.nombcurso = nombcurso;
     }
 
-    public double getHorasPorClase() {
-        return horasPorClase;
+    public String getNivelAcademico() {
+        return nivelAcademico;
     }
 
-    public void setHorasPorClase(double horasPorClase) {
-        this.horasPorClase = horasPorClase;
+    public void setNivelAcademico(String nivelAcademico) {
+        this.nivelAcademico = nivelAcademico;
     }
 
-    public ArrayList<Nota> getNotas() {
-        return notas;
+    public Docente getDocente() {
+        return docente;
     }
 
-    public void setNotas(ArrayList<Nota> notas) {
-        this.notas = notas;
+    public void setDocente(Docente docente) {
+        this.docente = docente;
+    }
+
+    public ArrayList<Matricula> getAlumnosInscritos() {
+        return alumnosInscritos;
+    }
+
+    public void setAlumnosInscritos(ArrayList<Matricula> alumnosInscritos) {
+        this.alumnosInscritos = alumnosInscritos;
+    }
+
+    public void addAlumnoRegistrado(Matricula alumnoCurso){
+        alumnosInscritos.add(alumnoCurso);
     }
     
-    private String generarCodigoCurso(){
-        correlativoCurso++;
-        String Codigo="C-"+this.getNomb_curso().substring(0,3)+String.valueOf(Curso.correlativoCurso);
-        return Codigo;
+    public   String generarCodigoCurso(int correlativo){
+        String ultimoCorrelativo="00000"+String.valueOf(correlativo);
+        return "C"+ultimoCorrelativo.substring(ultimoCorrelativo.length()-3);
     }
 }

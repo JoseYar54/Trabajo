@@ -1,30 +1,58 @@
 package Modelo;
 
-public abstract class Docente extends Persona{
+import java.util.ArrayList;
 
-    private String sede;
-    private String cod_Docente;
-    public static int correlativoDocente=100;
+public class Docente extends Persona{
+    private String codigoDocente;
+    private double sueldo;
+    
+    private ArrayList<Curso> cursosDictados;
 
-    public Docente(String sede, String nivel, String nombre, String ap_materno, String ap_paterno, String dni, int edad) {
-        super(nombre, ap_materno, ap_paterno, dni, edad);
-        this.sede = sede;
+    public Docente(double sueldo, String nombre, String ap_materno, String ap_paterno, String dni) {
+        super(nombre, ap_materno, ap_paterno, dni);
+        this.sueldo = sueldo;
+        this.cursosDictados=new ArrayList<>();
     }
 
-    public String getSede() {
-        return sede;
+    public ArrayList<Curso> getCursosDictados() {
+        return cursosDictados;
     }
 
-    public void setSede(String sede) {
-        this.sede = sede;
+    public void setCursosDictados(ArrayList<Curso> cursosDictados) {
+        this.cursosDictados = cursosDictados;
     }
 
-    public String getCod_Docente() {
-        return cod_Docente;
+    public String getCodigoDocente() {
+        return codigoDocente;
     }
 
-    public void setCod_Docente(String cod_Docente) {
-        this.cod_Docente = cod_Docente;
+    public void setCodigoDocente(String codigoDocente) {
+        this.codigoDocente = codigoDocente;
     }
 
+    public double getSueldo() {
+        return sueldo;
+    }
+
+    public void setSueldo(double sueldo) {
+        this.sueldo = sueldo;
+    }
+
+    @Override
+    public String detallesPersona() {
+        String m="\n"
+            + "------Docente Full------"+"\n"
+            +"Código: "+this.getCodigoDocente()+"\n"
+            + "Apellidos: "+this.getAp_paterno()+" "+this.getAp_materno()+"\n"
+            + "Nombre: "+this.getNombre()+"\n"
+            + "DNI: "+this.getDni()+"\n"
+            + "Sueldo: "+this.getSueldo();
+        return m;    
+    }
+
+    @Override
+    public String generarCodigo(int correlativo) {
+        String ultimoCorrelativo="00000"+String.valueOf(correlativo);
+        return "D"+ultimoCorrelativo.substring(ultimoCorrelativo.length()-3);
+    }
 }
