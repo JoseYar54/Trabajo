@@ -37,10 +37,10 @@ public class FrmMenuCursos extends javax.swing.JFrame {
         IconTools.addIconOption(lblCerrar,"img/return1.png");
         IconTools.addIconOption(LblAgregarCurso,urlAgregarCurso1);
         IconTools.addIconOption(LblEliminarCurso,urlEliminarCurso1);
-        IconTools.addIconOption(lblAsignarCurso, urlAsignar1);
+        IconTools.addIconOption(lblEditarCurso, urlAsignar1);
         IconTools.addIconOption(lblVisualizarCurso, urlVisualizarCurso1);
         IconTools.addMouseDecoration(lblCerrar, "img/return2.png", "img/return1.png");
-        IconTools.addMouseDecoration(lblAsignarCurso,urlAsignar2,urlAsignar1);
+        IconTools.addMouseDecoration(lblEditarCurso,urlAsignar2,urlAsignar1);
         IconTools.addMouseDecoration(LblEliminarCurso,urlEliminarCurso2,urlEliminarCurso1);
         IconTools.addMouseDecoration(LblAgregarCurso,urlAgregarCurso2,urlAgregarCurso1);
         IconTools.addMouseDecoration(lblVisualizarCurso,urlVisualizarCurso2,urlVisualizarCurso1);
@@ -67,10 +67,11 @@ public class FrmMenuCursos extends javax.swing.JFrame {
         });
         
         //Logica para el apartado de Asignar
-        lblAsignarCurso.addMouseListener(new MouseAdapter() {
+        lblEditarCurso.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                
+                FrmEditarCurso frmAsignarCurso=new FrmEditarCurso();
+                frmAsignarCurso.setVisible(true);
             }
         });
         
@@ -110,7 +111,7 @@ public class FrmMenuCursos extends javax.swing.JFrame {
         LblTextEliminar = new javax.swing.JLabel();
         LblTextAgregar1 = new javax.swing.JLabel();
         LblTextEliminar1 = new javax.swing.JLabel();
-        lblAsignarCurso = new javax.swing.JLabel();
+        lblEditarCurso = new javax.swing.JLabel();
         LblTextAsignar1 = new javax.swing.JLabel();
         LblTextAsignar2 = new javax.swing.JLabel();
         lblVisualizarCurso = new javax.swing.JLabel();
@@ -190,13 +191,13 @@ public class FrmMenuCursos extends javax.swing.JFrame {
         LblTextEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTextEliminar1.setText("Curso");
 
-        lblAsignarCurso.setBackground(new java.awt.Color(204, 255, 204));
-        lblAsignarCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEditarCurso.setBackground(new java.awt.Color(204, 255, 204));
+        lblEditarCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         LblTextAsignar1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         LblTextAsignar1.setForeground(new java.awt.Color(102, 102, 102));
         LblTextAsignar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTextAsignar1.setText("Asignar");
+        LblTextAsignar1.setText("Editar");
 
         LblTextAsignar2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         LblTextAsignar2.setForeground(new java.awt.Color(102, 102, 102));
@@ -236,7 +237,7 @@ public class FrmMenuCursos extends javax.swing.JFrame {
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LblTextAsignar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LblTextAsignar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAsignarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -259,7 +260,7 @@ public class FrmMenuCursos extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(LblTextEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(PnlPrincipalLayout.createSequentialGroup()
-                            .addComponent(lblAsignarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(LblTextAsignar1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -305,8 +306,8 @@ public class FrmMenuCursos extends javax.swing.JFrame {
     private javax.swing.JLabel LblTextEliminar1;
     private javax.swing.JPanel PnlCeleste;
     private javax.swing.JPanel PnlPrincipal;
-    private javax.swing.JLabel lblAsignarCurso;
     private javax.swing.JLabel lblCerrar;
+    private javax.swing.JLabel lblEditarCurso;
     private javax.swing.JLabel lblMainIcon;
     private javax.swing.JLabel lblTxtVisualizar1;
     private javax.swing.JLabel lblTxtVisualizar2;

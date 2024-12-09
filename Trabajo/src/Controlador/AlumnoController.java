@@ -109,7 +109,7 @@ public class AlumnoController {
             listaAlumnos.remove(alumnoBuscado);
             alumnoNuevo.setCod_alumno(alumnoNuevo.generarCodigo(cantidadAlumnos()+1));
             listaAlumnos.add(alumnoNuevo);
-    }
+        }
     }
     
     /**

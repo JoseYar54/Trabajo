@@ -57,10 +57,10 @@ public class DataTools {
      * @param c 
      */
     public static void readDocData(DocenteController docenteController){
-         String linea, nombres,dni,codigo,ap_paterno,ap_materno;
-         double sueldo;
-         String separado[];
-         try {
+        String linea, nombres,dni,codigo,ap_paterno,ap_materno;
+        double sueldo;
+        String separado[];
+        try {
             File file = new File("Docentes.txt");
             FileReader fr = new FileReader(file);
             BufferedReader bf = new BufferedReader(fr);
@@ -85,7 +85,8 @@ public class DataTools {
      * Metodo que carga los datos del archivo local Cursos
      */
     public static void readDocData(CursoController cursoController,DocenteController docenteController){
-         String codigo,nombCurso,nivelAca,DocenteAsig,linea;
+        cursoController.getListaCursos().clear();
+        String codigo,nombCurso,nivelAca,DocenteAsig,linea;
          String parametros[];
          try {
             File file = new File("Cursos.txt");
@@ -118,7 +119,7 @@ public class DataTools {
     public static void writeDocData(AlumnoController c){
         try{
         File file = new File("Alumnos.txt");
-        FileWriter fw = new FileWriter(file);
+        FileWriter fw = new FileWriter(file,false);
         PrintWriter pw = new PrintWriter(fw);
         for (Alumno objEst : c.getListaAlumnos()) {
              pw.println(objEst.getCod_alumno()+"-"+
@@ -151,8 +152,8 @@ public class DataTools {
                     objEst.getNombre()+"-"+
                     objEst.getAp_paterno()+"-"+
                     objEst.getAp_materno()+"-"+
-                     objEst.getSueldo()+"-"+
-                     objEst.getDni()
+                    objEst.getSueldo()+"-"+
+                    objEst.getDni()
              );
         }
         pw.close();
@@ -173,13 +174,13 @@ public class DataTools {
              pw.println(curso.getCod_Curso()+"-"+
                     curso.getNombcurso()+"-"+
                     curso.getNivelAcademico()+"-"+
-                     curso.getDocente().getCodigoDocente()
+                    curso.getDocente().getCodigoDocente()
              );
         }
         pw.close();
         }catch(Exception e){
-            System.out.println(cursoController.cantidadCursos());
             LogicTools.sendMessage("Error al grabar el archivo local Cursos");
+            e.printStackTrace();
         }
      }
 }

@@ -47,6 +47,20 @@ public class CursoController {
         }
     }
     
+    public void editarCurso(Curso cursoEditar, Curso cursoNuevo) {
+        Iterator<Curso> iterator = listaCursos.iterator();
+        int pos = 0;
+        while (iterator.hasNext()) {
+            Curso curso = iterator.next();
+            if (curso.getCod_Curso().equals(cursoEditar.getCod_Curso())) {
+                iterator.remove();
+                listaCursos.add(pos, cursoNuevo);
+                return; 
+            }
+            pos++;
+        }
+    }
+    
     public Curso buscarCurso(String codCurso){
         for (Curso listaCurso : listaCursos) {
             if (listaCurso.getCod_Curso().equals(codCurso)) {

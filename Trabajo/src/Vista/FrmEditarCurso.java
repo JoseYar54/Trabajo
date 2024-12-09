@@ -9,14 +9,17 @@ import Tools.LogicTools;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class FrmAgregarCurso extends javax.swing.JFrame {
-    public FrmAgregarCurso() {
+public class FrmEditarCurso extends javax.swing.JFrame {
+    
+    private Curso cursoEditar;
+    
+    public FrmEditarCurso() {
         initComponents();
         LogicTools.styleMainFrame(this);
         LogicTools.styleCloseButtom(lblCerrar,IconTools.colorPnls);
         setBasicStyles();
         setLogicCloseButtom();
-        setInputDecoration();
+        setEmptyInputs();
     }   
     
     private void setBasicStyles(){
@@ -35,6 +38,20 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void setEmptyInputs(){
+            txtCajaDocenteAsignado.setEnabled(false);
+            txtCajaCodigoDocente.setEnabled(false);
+            txtCajaNombreCurso.setEnabled(false);
+            cmbNivelAcademico.setEnabled(false);
+            btnEditarCurso.setEnabled(false);
+
+            txtCajaDocenteAsignado.setText("");
+            txtCajaCodigoDocente.setText("");
+            txtCajaDocenteAsignado.setText("");
+            txtCajaNombreCurso.setText("");
+            cmbNivelAcademico.setSelectedItem("-");
+    }
  
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,9 +69,11 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         txtCajaCodigoDocente = new javax.swing.JTextField();
         lblNivelAcademico = new javax.swing.JLabel();
         cmbNivelAcademico = new javax.swing.JComboBox<>();
-        btnAgregarCurso = new javax.swing.JButton();
+        btnEditarCurso = new javax.swing.JButton();
         lblDocenteAsigando = new javax.swing.JLabel();
         txtCajaDocenteAsignado = new javax.swing.JTextField();
+        lblCodigoCurso = new javax.swing.JLabel();
+        txtCajaCodigoCurso = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -69,7 +88,7 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         LblOpcion.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         LblOpcion.setForeground(new java.awt.Color(255, 255, 255));
         LblOpcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LblOpcion.setText("AGREGAR CURSO");
+        LblOpcion.setText("EDITAR CURSO");
 
         lblMainIcon.setBackground(new java.awt.Color(204, 255, 204));
         lblMainIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -88,24 +107,24 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblMainIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LblOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(28, 28, 28)
+                .addComponent(LblOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlSuperiorLayout.setVerticalGroup(
             pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlSuperiorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LblOpcion)
                     .addComponent(lblMainIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(lblCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         lblMensaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblMensaje.setForeground(new java.awt.Color(102, 102, 102));
-        lblMensaje.setText("Introduzca Datos para el Curso:");
+        lblMensaje.setText("Insertar el ID del curso para poder editar el curso:");
 
         lblNombreCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblNombreCurso.setForeground(new java.awt.Color(102, 102, 102));
@@ -151,19 +170,19 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
             }
         });
 
-        btnAgregarCurso.setBackground(new java.awt.Color(163, 156, 218));
-        btnAgregarCurso.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
-        btnAgregarCurso.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarCurso.setText("AGREGAR CURSO");
-        btnAgregarCurso.setToolTipText("");
-        btnAgregarCurso.setActionCommand("Buscar");
-        btnAgregarCurso.setAlignmentY(0.0F);
-        btnAgregarCurso.setBorder(null);
-        btnAgregarCurso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAgregarCurso.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnAgregarCurso.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarCurso.setBackground(new java.awt.Color(163, 156, 218));
+        btnEditarCurso.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
+        btnEditarCurso.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarCurso.setText("EDITAR CURSO");
+        btnEditarCurso.setToolTipText("");
+        btnEditarCurso.setActionCommand("Buscar");
+        btnEditarCurso.setAlignmentY(0.0F);
+        btnEditarCurso.setBorder(null);
+        btnEditarCurso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEditarCurso.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEditarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarCursoActionPerformed(evt);
+                btnEditarCursoActionPerformed(evt);
             }
         });
 
@@ -179,53 +198,71 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
             }
         });
 
+        lblCodigoCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblCodigoCurso.setForeground(new java.awt.Color(102, 102, 102));
+        lblCodigoCurso.setText("Código Curso:");
+
+        txtCajaCodigoCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCajaCodigoCursoActionPerformed(evt);
+            }
+        });
+        txtCajaCodigoCurso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCajaCodigoCursoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCajaCodigoCursoKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblCodigoDocente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblNombreCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblDocenteAsigando, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblNivelAcademico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtCajaNombreCurso)
-                                .addComponent(txtCajaCodigoDocente)
-                                .addComponent(cmbNivelAcademico, javax.swing.GroupLayout.Alignment.TRAILING, 0, 186, Short.MAX_VALUE))
-                            .addComponent(txtCajaDocenteAsignado))
-                        .addGap(17, 17, 17))))
-            .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnAgregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                            .addComponent(lblCodigoCurso)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCajaCodigoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                            .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblDocenteAsigando, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblNivelAcademico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblNombreCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblCodigoDocente, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGap(39, 39, 39)
+                            .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtCajaNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCajaCodigoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCajaDocenteAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbNivelAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPrincipalLayout.createSequentialGroup()
                 .addComponent(pnlSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCajaNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCajaCodigoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCodigoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCodigoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCajaCodigoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCajaCodigoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCodigoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCajaNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDocenteAsigando, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,9 +271,9 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNivelAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbNivelAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAgregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
         javax.swing.GroupLayout lblFondoLayout = new javax.swing.GroupLayout(lblFondo);
@@ -252,8 +289,8 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
             lblFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lblFondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -278,30 +315,33 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         return DataController.docenteController.buscarDocenteCOD(Codigo);
     }
     
-    private void btnAgregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCursoActionPerformed
+    private Curso cursoEditar(String codCurso){
+        Curso curso=DataController.cursoController.buscarCurso(codCurso);
+        return curso;
+    }
+    
+    private void btnEditarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCursoActionPerformed
+        DataController.inicializarDatos();
         try{
             String nombCurso=obtenerNombreCurso();
             String codDocente=obtenerCodigoDocente();
             String nivel=obtenerNivelAcademico();
-            
+            String codigo=txtCajaCodigoCurso.getText().toUpperCase();
             Docente docente=obtenerDocente(codDocente);
-            Curso curso=new Curso(nombCurso, docente);
-            
+            Curso curso=new Curso(nombCurso,docente);
+            curso.setCod_Curso(codigo);
             curso.setNivelAcademico(nivel);
             
-            System.out.println(curso.getCod_Curso());
-            DataController.cursoController.agregarCurso(curso);
-            LogicTools.sendMessage("Curso registrado correctamente :D");
-            LogicTools.sendMessage("El codigo del Curso es: "+curso.getCod_Curso());
-            limpiarCajas();
+            DataController.cursoController.editarCurso(cursoEditar, curso);
+            LogicTools.sendMessage("Curso editado correctamente :D");
             DataTools.writeDocData(DataController.cursoController);
             setVisible(false);
             dispose();
         }catch(Exception e){
-            LogicTools.sendMessage("Error al registrar al alumno"+e.getMessage());
-            limpiarCajas();
+            LogicTools.sendMessage("Error al editar el Curso: "+e.getMessage());
+            setEmptyInputs();
         }
-    }//GEN-LAST:event_btnAgregarCursoActionPerformed
+    }//GEN-LAST:event_btnEditarCursoActionPerformed
 
     private void cmbNivelAcademicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNivelAcademicoActionPerformed
     }//GEN-LAST:event_cmbNivelAcademicoActionPerformed
@@ -321,15 +361,6 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
     private void txtCajaNombreCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajaNombreCursoActionPerformed
 
     }//GEN-LAST:event_txtCajaNombreCursoActionPerformed
-
-    private String devolverDatosDocente(String codDocente) {
-        Docente docente = DataController.docenteController.buscarDocenteCOD(codDocente);
-        if (docente != null) {
-            return docente.getNombre() + " " + docente.getAp_paterno() + " " + docente.getAp_materno();
-        } else {
-            return "Docente no encontrado";
-        }
-    }
     
     private void txtCajaCodigoDocenteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaCodigoDocenteKeyReleased
         if (txtCajaCodigoDocente.getText().length() == 4) {
@@ -341,6 +372,50 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
             txtCajaDocenteAsignado.setText("");
         }
     }//GEN-LAST:event_txtCajaCodigoDocenteKeyReleased
+
+    private void txtCajaCodigoCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajaCodigoCursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCajaCodigoCursoActionPerformed
+
+    private String devolverDatosDocente(String codDocente) {
+        Docente docente = DataController.docenteController.buscarDocenteCOD(codDocente);
+        if (docente != null) {
+            return docente.getNombre() + " " + docente.getAp_paterno() + " " + docente.getAp_materno();
+        } else {
+            return "Docente no encontrado";
+        }
+    }
+    
+    private void txtCajaCodigoCursoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaCodigoCursoKeyReleased
+        try {
+            if (txtCajaCodigoCurso.getText().length()==4) {
+                this.cursoEditar = cursoEditar(txtCajaCodigoCurso.getText().toUpperCase());
+                System.out.println(cursoEditar.toString());
+                if (cursoEditar!=null) {
+                    btnEditarCurso.setEnabled(true);
+                    txtCajaDocenteAsignado.setEnabled(true);
+                    txtCajaCodigoDocente.setEnabled(true);
+                    txtCajaNombreCurso.setEnabled(true);
+                    cmbNivelAcademico.setEnabled(true);
+                    txtCajaCodigoDocente.setText(cursoEditar.getDocente().getCodigoDocente());
+                    txtCajaDocenteAsignado.setText(cursoEditar.getDocente().getAp_paterno()+" "+cursoEditar.getDocente().getAp_materno()+" "+cursoEditar.getDocente().getNombre());
+                    txtCajaNombreCurso.setText(cursoEditar.getNombcurso());
+                    cmbNivelAcademico.setSelectedItem(cursoEditar.getNivelAcademico());    
+                }else{
+                    LogicTools.sendMessage("Curso no existe!");
+                    setEmptyInputs();
+                }
+            }else{
+                setEmptyInputs();
+            }
+        } catch (Exception e) {
+            LogicTools.sendMessage("Error al buscar curso");
+        }
+    }//GEN-LAST:event_txtCajaCodigoCursoKeyReleased
+
+    private void txtCajaCodigoCursoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaCodigoCursoKeyTyped
+        LogicTools.setMaxSize(evt, txtCajaCodigoCurso, 4);
+    }//GEN-LAST:event_txtCajaCodigoCursoKeyTyped
 
     private String obtenerNombreCurso(){
         return txtCajaNombreCurso.getText();
@@ -354,25 +429,12 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         return (String)cmbNivelAcademico.getSelectedItem();
     }
     
-    private void setInputDecoration(){
-        int tamanio=12;
-        LogicTools.setStyleInput(txtCajaNombreCurso, "Ingresa un Nombre", tamanio);
-        LogicTools.setStyleInput(txtCajaCodigoDocente, "Ingresa apellido paterno",tamanio);
-        LogicTools.setStyleInput(txtCajaDocenteAsignado, "Ingresa apellido materno", tamanio);
-    }
-    
-    private void limpiarCajas(){
-        txtCajaDocenteAsignado.setText("");
-        txtCajaCodigoDocente.setText("");
-        txtCajaNombreCurso.setText("");
-        cmbNivelAcademico.setSelectedItem("-");
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblOpcion;
-    private javax.swing.JButton btnAgregarCurso;
+    private javax.swing.JButton btnEditarCurso;
     private javax.swing.JComboBox<String> cmbNivelAcademico;
     private javax.swing.JLabel lblCerrar;
+    private javax.swing.JLabel lblCodigoCurso;
     private javax.swing.JLabel lblCodigoDocente;
     private javax.swing.JLabel lblDocenteAsigando;
     private javax.swing.JPanel lblFondo;
@@ -382,6 +444,7 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreCurso;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JPanel pnlSuperior;
+    private javax.swing.JTextField txtCajaCodigoCurso;
     private javax.swing.JTextField txtCajaCodigoDocente;
     private javax.swing.JTextField txtCajaDocenteAsignado;
     private javax.swing.JTextField txtCajaNombreCurso;
