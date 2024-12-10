@@ -41,7 +41,7 @@ public class AlumnoController {
     /**
      * Busqueda multiple de alumnos
     */
-    public HashSet<Alumno> buscarAlumnos(
+    public HashSet<Alumno> buscarAlumno(
         String codigo, String nombre, String apPaterno, String apMaterno, 
         String dni,String nivelAcademico, String seccion, Integer grado) {
 
@@ -105,10 +105,16 @@ public class AlumnoController {
      * Editar Alumno
     */
     public void editarAlumno(Alumno alumnoBuscado,Alumno alumnoNuevo){
-        if (listaAlumnos.contains(alumnoBuscado)) {
-            listaAlumnos.remove(alumnoBuscado);
-            alumnoNuevo.setCod_alumno(alumnoNuevo.generarCodigo(cantidadAlumnos()+1));
-            listaAlumnos.add(alumnoNuevo);
+        Iterator<Alumno> iterator = listaAlumnos.iterator();
+        while (iterator.hasNext()) {
+            Alumno alumno = iterator.next();
+            String codAlu = alumno.getCod_alumno();
+            if (alumno.getCod_alumno().equals(alumnoBuscado.getCod_alumno())) {
+                iterator.remove();
+                alumnoNuevo.setCod_alumno(codAlu);
+                listaAlumnos.add(alumnoNuevo);
+                return; 
+            }
         }
     }
     

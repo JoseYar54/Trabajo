@@ -16,7 +16,7 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         LogicTools.styleCloseButtom(lblCerrar,IconTools.colorPnls);
         setBasicStyles();
         setLogicCloseButtom();
-        setInputDecoration();
+        dispose();
     }   
     
     private void setBasicStyles(){
@@ -274,17 +274,15 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCajaDocenteAsignadoKeyTyped
 
-    private Docente obtenerDocente(String Codigo){
-        return DataController.docenteController.buscarDocenteCOD(Codigo);
-    }
-    
     private void btnAgregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCursoActionPerformed
+        Docente docente;
         try{
             String nombCurso=obtenerNombreCurso();
             String codDocente=obtenerCodigoDocente();
             String nivel=obtenerNivelAcademico();
             
-            Docente docente=obtenerDocente(codDocente);
+            docente=DataController.docenteController.buscarDocenteCOD(codDocente);
+            
             Curso curso=new Curso(nombCurso, docente);
             
             curso.setNivelAcademico(nivel);
@@ -347,18 +345,11 @@ public class FrmAgregarCurso extends javax.swing.JFrame {
     }
     
     private String obtenerCodigoDocente(){
-        return txtCajaCodigoDocente.getText();
+        return txtCajaCodigoDocente.getText().toUpperCase();
     }
     
     private String obtenerNivelAcademico(){
         return (String)cmbNivelAcademico.getSelectedItem();
-    }
-    
-    private void setInputDecoration(){
-        int tamanio=12;
-        LogicTools.setStyleInput(txtCajaNombreCurso, "Ingresa un Nombre", tamanio);
-        LogicTools.setStyleInput(txtCajaCodigoDocente, "Ingresa apellido paterno",tamanio);
-        LogicTools.setStyleInput(txtCajaDocenteAsignado, "Ingresa apellido materno", tamanio);
     }
     
     private void limpiarCajas(){

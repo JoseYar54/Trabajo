@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Alumno;
 import Modelo.Docente;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -54,7 +55,7 @@ public class DocenteController {
     */
     public HashSet<Docente> buscarDocentes(
         String codigo, String nombre, String apPaterno, String apMaterno, 
-        String dni,String Curso,String nivel) {
+        String dni) {
 
     HashSet<Docente> resultado = new HashSet<>();
     boolean coincidencia = false;
@@ -104,11 +105,17 @@ public class DocenteController {
      * Editar Docente
     */
     public void editarDocente(Docente docenteBuscado,Docente docenteNuevo){
-        if (listaDocentes.contains(docenteBuscado)) {
-            listaDocentes.remove(docenteBuscado);
-            docenteNuevo.setCodigoDocente(docenteNuevo.generarCodigo(cantidadDocentes()+1));
-            listaDocentes.add(docenteNuevo);
-    }
+        Iterator<Docente> iterator = listaDocentes.iterator();
+        while (iterator.hasNext()) {
+            Docente docente = iterator.next();
+            String codDoc = docente.getCodigoDocente();
+            if (docente.getCodigoDocente().equals(docenteBuscado.getCodigoDocente())) {
+                iterator.remove();
+                docenteNuevo.setCodigoDocente(codDoc);
+                listaDocentes.add(docenteNuevo);
+                return; 
+            }
+        }
     }
     
     /**

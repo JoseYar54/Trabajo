@@ -50,13 +50,9 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
         txtCajaApPaterno = new javax.swing.JTextField();
         lblDNI = new javax.swing.JLabel();
         txtCajaDNI = new javax.swing.JTextField();
-        lblCurso = new javax.swing.JLabel();
-        cmbCurso = new javax.swing.JComboBox<>();
         btnAgregarAlumno = new javax.swing.JButton();
         lblApMat1 = new javax.swing.JLabel();
         txtCajaApMaterno = new javax.swing.JTextField();
-        lblNivel = new javax.swing.JLabel();
-        cmbNivel = new javax.swing.JComboBox<>();
         lblSueldo = new javax.swing.JLabel();
         txtCajaSueldo = new javax.swing.JTextField();
         pnlBorde = new javax.swing.JPanel();
@@ -91,7 +87,7 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblMainIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LblOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                .addComponent(LblOpcion, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -152,12 +148,6 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
             }
         });
 
-        lblCurso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblCurso.setForeground(new java.awt.Color(102, 102, 102));
-        lblCurso.setText("Cursos:");
-
-        cmbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Aritmetica", "Geometria", "RM", "Trigonometria", "Algebra" }));
-
         btnAgregarAlumno.setBackground(new java.awt.Color(163, 156, 218));
         btnAgregarAlumno.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
         btnAgregarAlumno.setForeground(new java.awt.Color(255, 255, 255));
@@ -183,12 +173,6 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
                 txtCajaApMaternoKeyTyped(evt);
             }
         });
-
-        lblNivel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblNivel.setForeground(new java.awt.Color(102, 102, 102));
-        lblNivel.setText("Nivel:");
-
-        cmbNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Primaria", "Secundaria" }));
 
         lblSueldo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblSueldo.setForeground(new java.awt.Color(102, 102, 102));
@@ -220,27 +204,16 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
                                     .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(lblApPa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblApMat1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                        .addComponent(lblNivel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblCurso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(lblApMat1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                                     .addComponent(lblSueldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                        .addGap(127, 127, 127)
-                                        .addComponent(cmbCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtCajaSueldo, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtCajaNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                            .addComponent(txtCajaApPaterno, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtCajaApMaterno, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtCajaDNI, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCajaSueldo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtCajaNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(txtCajaApPaterno, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtCajaApMaterno, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtCajaDNI, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addComponent(btnAgregarAlumno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(cmbNivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         pnlPrincipalLayout.setVerticalGroup(
@@ -269,15 +242,7 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCajaSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(btnAgregarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -288,11 +253,11 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
         pnlBorde.setLayout(pnlBordeLayout);
         pnlBordeLayout.setHorizontalGroup(
             pnlBordeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
         pnlBordeLayout.setVerticalGroup(
             pnlBordeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 616, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -310,8 +275,8 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pnlBorde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -323,38 +288,51 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCajaApMaternoKeyTyped
 
+    private boolean validarBoton(){
+        if (txtCajaNombre.getText().length()>=3 &&
+            txtCajaApMaterno.getText().length()>=3 &&
+            txtCajaApPaterno.getText().length()>=3 &&
+            txtCajaDNI.getText().length()==8 &&
+            txtCajaSueldo.getText().length()>=3
+            ){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     private void btnAgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAlumnoActionPerformed
-        try{
-            double sueldo=0;
+        if (validarBoton()) {
             try{
-                sueldo=obtenerSueldo();
+                double sueldo=0;
+                try{
+                    sueldo=obtenerSueldo();
+                }catch(Exception e){
+                    LogicTools.sendMessage("Se controlo un error previsto");
+                }
+                String nomb=obtenerNombre();
+                String apMa=obtenerApMaterno();
+                String apPa=obtenerApPaterno();
+                String dni=obtenerDNI();
+
+                Docente docente=new Docente(sueldo, nomb, apMa, apPa, dni);
+
+                if (DataController.docenteController.buscarDocente(dni)==null) {
+                    DataController.docenteController.agregarDocente(docente);
+                    LogicTools.sendMessage("Docente registrado correctamente :D");
+                    LogicTools.sendMessage("El codigo del alumno es: "+docente.getCodigoDocente());
+                    limpiarCajas();
+                    DataTools.writeDocData(DataController.docenteController);
+                    setVisible(false);
+                    dispose();
+                }else{
+                    LogicTools.sendMessage("El DNI del alumno que se desea ingresar ya esta registrado");
+                    limpiarCajas();
+                }
             }catch(Exception e){
-                LogicTools.sendMessage("Se controlo un error previsto");
-            }
-            String nomb=obtenerNombre();
-            String apMa=obtenerApMaterno();
-            String apPa=obtenerApPaterno();
-            String dni=obtenerDNI();
-            String curso=obtenerCurso();
-
-            Docente docente=new Docente(sueldo, nomb, apMa, apPa, dni);
-
-            if (DataController.docenteController.buscarDocente(dni)==null) {
-                DataController.docenteController.agregarDocente(docente);
-                LogicTools.sendMessage("Docente registrado correctamente :D");
-                LogicTools.sendMessage("El codigo del alumno es: "+docente.getCodigoDocente());
-                limpiarCajas();
-                DataTools.writeDocData(DataController.docenteController);
-                setVisible(false);
-                dispose();
-            }else{
-                LogicTools.sendMessage("El DNI del alumno que se desea ingresar ya esta registrado");
+                LogicTools.sendMessage("Error al registrar al alumno");
                 limpiarCajas();
             }
-
-        }catch(Exception e){
-            LogicTools.sendMessage("Error al registrar al alumno");
-            limpiarCajas();
         }
     }//GEN-LAST:event_btnAgregarAlumnoActionPerformed
 
@@ -398,10 +376,6 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
         return txtCajaDNI.getText();
     }
     
-    private String obtenerCurso(){
-        return (String)cmbCurso.getSelectedItem();
-    }
-    
     private double obtenerSueldo(){
         return Double.parseDouble(txtCajaSueldo.getText());
     }
@@ -424,16 +398,12 @@ public class FrmAgregarDocente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblOpcion;
     private javax.swing.JButton btnAgregarAlumno;
-    private javax.swing.JComboBox<String> cmbCurso;
-    private javax.swing.JComboBox<String> cmbNivel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblApMat1;
     private javax.swing.JLabel lblApPa;
     private javax.swing.JLabel lblCerrar;
-    private javax.swing.JLabel lblCurso;
     private javax.swing.JLabel lblDNI;
     private javax.swing.JLabel lblMainIcon;
-    private javax.swing.JLabel lblNivel;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblSueldo;
     private javax.swing.JPanel pnlBorde;

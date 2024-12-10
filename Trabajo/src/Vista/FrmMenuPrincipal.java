@@ -83,7 +83,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 setVisible(false);
-                FrmPrinci p=new FrmPrinci();
+                FrmMain p=new FrmMain();
                 dispose();
                 p.setVisible(true);
             }
@@ -101,12 +101,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         lblMainIcon = new javax.swing.JLabel();
         lblNotas = new javax.swing.JLabel();
         lblPersonas = new javax.swing.JLabel();
-        LblTextBuscar2 = new javax.swing.JLabel();
-        LblTextEditar = new javax.swing.JLabel();
         LblTextBuscar3 = new javax.swing.JLabel();
         LblTextBuscar4 = new javax.swing.JLabel();
         lblCursos = new javax.swing.JLabel();
-        LblTextEditar1 = new javax.swing.JLabel();
         LblTextBuscar5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,16 +158,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         lblPersonas.setBackground(new java.awt.Color(204, 255, 204));
         lblPersonas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        LblTextBuscar2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        LblTextBuscar2.setForeground(new java.awt.Color(102, 102, 102));
-        LblTextBuscar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTextBuscar2.setText("Visualizar");
-
-        LblTextEditar.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        LblTextEditar.setForeground(new java.awt.Color(102, 102, 102));
-        LblTextEditar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTextEditar.setText("Visualizar");
-
         LblTextBuscar3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         LblTextBuscar3.setForeground(new java.awt.Color(102, 102, 102));
         LblTextBuscar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -183,11 +170,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         lblCursos.setBackground(new java.awt.Color(204, 255, 204));
         lblCursos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        LblTextEditar1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        LblTextEditar1.setForeground(new java.awt.Color(102, 102, 102));
-        LblTextEditar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTextEditar1.setText("Visualizar");
 
         LblTextBuscar5.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         LblTextBuscar5.setForeground(new java.awt.Color(102, 102, 102));
@@ -203,48 +185,32 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 .addGap(130, 130, 130)
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LblTextBuscar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblTextBuscar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(121, 121, 121)
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LblTextBuscar3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(LblTextEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LblTextBuscar5, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(LblTextEditar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCursos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(130, 130, 130))
         );
         PnlPrincipalLayout.setVerticalGroup(
             PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlPrincipalLayout.createSequentialGroup()
                 .addComponent(PnlCeleste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(PnlPrincipalLayout.createSequentialGroup()
-                        .addComponent(lblNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LblTextEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(PnlPrincipalLayout.createSequentialGroup()
-                            .addComponent(lblCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(LblTextEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGroup(PnlPrincipalLayout.createSequentialGroup()
-                            .addComponent(lblPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(LblTextBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LblTextBuscar5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(LblTextBuscar4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LblTextBuscar3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(136, 136, 136))
+                    .addComponent(lblNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LblTextBuscar4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblTextBuscar3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LblTextBuscar5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(172, 172, 172))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,12 +229,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblOpcion;
-    private javax.swing.JLabel LblTextBuscar2;
     private javax.swing.JLabel LblTextBuscar3;
     private javax.swing.JLabel LblTextBuscar4;
     private javax.swing.JLabel LblTextBuscar5;
-    private javax.swing.JLabel LblTextEditar;
-    private javax.swing.JLabel LblTextEditar1;
     private javax.swing.JPanel PnlCeleste;
     private javax.swing.JPanel PnlPrincipal;
     private javax.swing.JLabel lblCerrar;

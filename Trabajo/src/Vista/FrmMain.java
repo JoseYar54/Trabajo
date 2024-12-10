@@ -7,10 +7,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 
-public class FrmPrinci extends javax.swing.JFrame {
+public class FrmMain extends javax.swing.JFrame {
     Color colorPnlLateral=new Color(86,104,118);
     
-    public FrmPrinci() {
+    public FrmMain() {
         initComponents();
         this.setTitle("Colegio");
         LogicTools.styleCloseButtom(lblCerrar,IconTools.colorPnlPrinci);
@@ -248,7 +248,7 @@ public class FrmPrinci extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPrinci().setVisible(true);
+                new FrmMain().setVisible(true);
             }
         });
     }

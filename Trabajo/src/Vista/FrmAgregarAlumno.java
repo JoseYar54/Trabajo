@@ -373,42 +373,60 @@ public class FrmAgregarAlumno extends javax.swing.JFrame {
         return Integer.parseInt((String)cmbGrado.getSelectedItem());
     }
     
+    private boolean validarBoton(){
+        if (txtCajaNombre.getText().length()>=3 &&
+            txtCajaApMaterno.getText().length()>=3 &&
+            txtCajaApPaterno.getText().length()>=3 &&
+            txtCajaDNI.getText().length()==8 &&
+            !((String)cmbGrado.getSelectedItem()).equals("-") &&
+            !((String)cmbNivel.getSelectedItem()).equals("-") &&
+            !((String)cmbSeccion.getSelectedItem()).equals("-")
+            ){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     private void btnAgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAlumnoActionPerformed
-        try{
-            String nomb=obtenerNombre();
-            String apMa=obtenerApMaterno();
-            String apPa=obtenerApPaterno();
-            String dni=obtenerDNI();
-            int grado=0;
-            try {
-                grado=obtenerGrado();
-            } catch (Exception e) {
-                System.out.println("Se capturo un error previsto");
-            }
-            String nivel=obtenerNivel();
-            String seccion=obtenerSeccion();
-            
-            Alumno alumno=new  Alumno(nivel, seccion, grado, nomb, apMa, apPa, dni);
-            
-            if (DataController.alumnoController.buscarAlumno(dni)==null) {
-                if (txtObservaciones.getText().length()>5) {
-                    alumno.setObservacion(txtObservaciones.getText());
+        if (validarBoton()) {
+            try{
+                String nomb=obtenerNombre();
+                String apMa=obtenerApMaterno();
+                String apPa=obtenerApPaterno();
+                String dni=obtenerDNI();
+                int grado=0;
+                try {
+                    grado=obtenerGrado();
+                } catch (Exception e) {
+                    System.out.println("Se capturo un error previsto");
                 }
-                DataController.alumnoController.agregarAlumno(alumno);
-                LogicTools.sendMessage("Alumno registrado correctamente :D");
-                LogicTools.sendMessage("El codigo del alumno es: "+alumno.getCod_alumno());
-                limpiarCajas();
-                DataTools.writeDocData(DataController.alumnoController);
-                setVisible(false);
-                dispose();
-            }else{
-                LogicTools.sendMessage("El DNI del alumno que se desea ingresar ya esta registrado");
+                String nivel=obtenerNivel();
+                String seccion=obtenerSeccion();
+
+                Alumno alumno=new  Alumno(nivel, seccion, grado, nomb, apMa, apPa, dni);
+
+                if (DataController.alumnoController.buscarAlumno(dni)==null) {
+                    if (txtObservaciones.getText().length()>5) {
+                        alumno.setObservacion(txtObservaciones.getText());
+                    }
+                    DataController.alumnoController.agregarAlumno(alumno);
+                    LogicTools.sendMessage("Alumno registrado correctamente :D");
+                    LogicTools.sendMessage("El codigo del alumno es: "+alumno.getCod_alumno());
+                    limpiarCajas();
+                    DataTools.writeDocData(DataController.alumnoController);
+                    setVisible(false);
+                    dispose();
+                }else{
+                    LogicTools.sendMessage("El DNI del alumno que se desea ingresar ya esta registrado");
+                    limpiarCajas();
+                }
+            }catch(Exception e){
+                LogicTools.sendMessage("Error al registrar al alumno");
                 limpiarCajas();
             }
-            
-        }catch(Exception e){
-            LogicTools.sendMessage("Error al registrar al alumno");
-            limpiarCajas();
+        }else{
+            LogicTools.sendMessage("Rellenar todos los campos es obligatorio");
         }
     }//GEN-LAST:event_btnAgregarAlumnoActionPerformed
     private void setInputDecoration(){

@@ -2,6 +2,7 @@ package Tools;
 
 import Controlador.AlumnoController;
 import Controlador.CursoController;
+import Controlador.DataController;
 import Controlador.DocenteController;
 import Modelo.Alumno;
 import Modelo.Curso;
@@ -57,6 +58,7 @@ public class DataTools {
      * @param c 
      */
     public static void readDocData(DocenteController docenteController){
+        DataController.docenteController.getListaDocentes().clear();
         String linea, nombres,dni,codigo,ap_paterno,ap_materno;
         double sueldo;
         String separado[];
@@ -78,6 +80,7 @@ public class DataTools {
             bf.close();
          } catch (Exception e) {
              LogicTools.sendMessage("Error al cargar el archivo local Docentes");
+             e.printStackTrace();
          }
      }
     
@@ -86,6 +89,7 @@ public class DataTools {
      */
     public static void readDocData(CursoController cursoController,DocenteController docenteController){
         cursoController.getListaCursos().clear();
+        DataController.recargarDatosDocentes();
         String codigo,nombCurso,nivelAca,DocenteAsig,linea;
          String parametros[];
          try {
@@ -98,7 +102,6 @@ public class DataTools {
                 nombCurso = parametros[1];
                 nivelAca = parametros[2];
                 DocenteAsig = parametros[3];
-                
                 Docente docente = docenteController.buscarDocenteCOD(DocenteAsig);
                 if (docente != null) {
                     Curso c = new Curso(nombCurso, docente);
@@ -165,22 +168,29 @@ public class DataTools {
     /**
      * Metodo que sobreescribe los datos del archivo local Cursos
      */
-    public static void writeDocData(CursoController cursoController){
-        try{
-        File file = new File("Cursos.txt");
-        FileWriter fw = new FileWriter(file);
-        PrintWriter pw = new PrintWriter(fw);
-        for (Curso curso: cursoController.getListaCursos()) {
-             pw.println(curso.getCod_Curso()+"-"+
-                    curso.getNombcurso()+"-"+
-                    curso.getNivelAcademico()+"-"+
-                    curso.getDocente().getCodigoDocente()
-             );
-        }
-        pw.close();
-        }catch(Exception e){
+    public static void writeDocData(CursoController cursoController) {
+        try {
+            if (cursoController.getListaCursos().isEmpty()) {
+                LogicTools.sendMessage("No hay cursos para guardar. Archivo no se actualizará.");
+                return;
+            }
+
+            File file = new File("Cursos.txt");
+            FileWriter fw = new FileWriter(file);
+            PrintWriter pw = new PrintWriter(fw);
+
+            for (Curso curso : cursoController.getListaCursos()) {
+                pw.println(curso.getCod_Curso() + "-" +
+                           curso.getNombcurso() + "-" +
+                           curso.getNivelAcademico() + "-" +
+                           curso.getDocente().getCodigoDocente());
+            }
+
+            pw.close();
+            fw.close();
+        } catch (Exception e) {
             LogicTools.sendMessage("Error al grabar el archivo local Cursos");
             e.printStackTrace();
-        }
-     }
+    }
+    }
 }

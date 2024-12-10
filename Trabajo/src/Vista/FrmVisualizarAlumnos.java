@@ -347,6 +347,7 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
 
     private void btnVerAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerAlumnosActionPerformed
         DataTools.writeDocData(DataController.alumnoController);
+        DataController.recargarDatosAlumnos();
         imprimirDatos();
     }//GEN-LAST:event_btnVerAlumnosActionPerformed
 
@@ -415,7 +416,7 @@ public class FrmVisualizarAlumnos extends javax.swing.JFrame {
             String dni = recibirDni();
             limpiarCajas();
             
-            HashSet<Alumno> busquedaFiltrada=DataController.alumnoController.buscarAlumnos(codigo,nombre, apPaterno, apMaterno,dni,nivel, seccion, grado);
+            HashSet<Alumno> busquedaFiltrada=DataController.alumnoController.buscarAlumno(codigo,nombre, apPaterno, apMaterno,dni,nivel, seccion, grado);
             txtCaja.setText("");
             txtCaja.setText("Codigo\tNombre\tAp. Paterno\tAp.Materno\tDNI\tNivel\tGrado\tSección\n");
             for (Alumno alumno : busquedaFiltrada) {

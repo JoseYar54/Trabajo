@@ -36,12 +36,11 @@ public class CursoController {
     public void eliminarCurso(String codigoCurso){
         Curso x = buscarCurso(codigoCurso);
         if (x != null) {
-            Iterator<Curso> iterador = this.listaCursos.iterator();
-            while (iterador.hasNext()) {
-                Curso c = iterador.next();
-                if (x.getCod_Curso().equals(codigoCurso)) {
-                    iterador.remove();
-                    break;
+            Iterator<Curso> iterator = listaCursos.iterator();
+            while (iterator.hasNext()) {
+                Curso curso = iterator.next();
+                if (curso.getCod_Curso().equals(codigoCurso)) {
+                    iterator.remove();
                 }
             }
         }
@@ -68,14 +67,6 @@ public class CursoController {
             }
         }
         return null;
-    }
-    
-    public void asignarDocente(String codCurso,Docente docente){
-        for (Curso listaCurso : listaCursos) {
-            if (listaCurso.getCod_Curso().equals(codCurso)) {
-                listaCurso.setDocente(docente);
-            }
-        }
     }
     
     public ArrayList<Curso> buscarCurso(String codigo,String nombreCurso,String nivelAcademico,String codDocente){

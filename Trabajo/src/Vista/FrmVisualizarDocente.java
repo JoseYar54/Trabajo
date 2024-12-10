@@ -60,10 +60,6 @@ public class FrmVisualizarDocente extends javax.swing.JFrame {
         txtCajaApPaterno = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtCajaApMaterno = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        cmbCursos = new javax.swing.JComboBox<>();
-        cmbNivel = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         lblDNI = new javax.swing.JLabel();
         txtCajaDNI = new javax.swing.JTextField();
@@ -180,28 +176,6 @@ public class FrmVisualizarDocente extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Nivel:");
-
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Curso:");
-
-        cmbCursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Aritmetica", "Geometria", "RM", "Trigonometria", "Algebra" }));
-        cmbCursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCursosActionPerformed(evt);
-            }
-        });
-
-        cmbNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Primaria", "Secundaria" }));
-        cmbNivel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbNivelActionPerformed(evt);
-            }
-        });
-
         btnBuscar.setBackground(new java.awt.Color(163, 156, 218));
         btnBuscar.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
@@ -256,14 +230,6 @@ public class FrmVisualizarDocente extends javax.swing.JFrame {
                                     .addComponent(txtCajaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(btnVerAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -301,15 +267,7 @@ public class FrmVisualizarDocente extends javax.swing.JFrame {
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCajaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
+                        .addGap(123, 123, 123)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28))
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
@@ -351,14 +309,6 @@ public class FrmVisualizarDocente extends javax.swing.JFrame {
         LogicTools.setOnlyChars(evt, txtCajaApMaterno, 20);
     }//GEN-LAST:event_txtCajaApMaternoKeyTyped
 
-    private String recibirNivel(){
-        return (String)cmbNivel.getSelectedItem();
-    }
-    
-    private String recibirCurso(){
-        return (String)cmbCursos.getSelectedItem();
-    }
-    
     private String recibirNombre(){
         return txtCajaNombre.getText();
     }
@@ -382,15 +332,13 @@ public class FrmVisualizarDocente extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
             String codigo = recibirCodigo();
-            String nivel = recibirNivel();
-            String curso=recibirCurso();
             String nombre = recibirNombre();
             String apPaterno = recibirApPa();
             String apMaterno = recibirApMa();
             String dni = recibirDni();
             limpiarCajas();
             
-            HashSet<Docente> busquedaFiltrada=DataController.docenteController.buscarDocentes(codigo,nombre, apPaterno, apMaterno,dni,curso,nivel);
+            HashSet<Docente> busquedaFiltrada=DataController.docenteController.buscarDocentes(codigo,nombre, apPaterno, apMaterno,dni);
             txtCaja.setText("");
             txtCaja.setText("Codigo\tNombre\tAp. Paterno\tAp.Materno\tSueldo\tDNI\n");
             for (Docente a: busquedaFiltrada) {
@@ -410,17 +358,8 @@ public class FrmVisualizarDocente extends javax.swing.JFrame {
         txtCajaCodigo.setText("");
         txtCajaDNI.setText("");
         txtCajaNombre.setText("");
-        cmbCursos.setSelectedItem("-");
-        cmbNivel.setSelectedItem("-");
     }
     
-    private void cmbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursosActionPerformed
-        
-    }//GEN-LAST:event_cmbCursosActionPerformed
-
-    private void cmbNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNivelActionPerformed
-    }//GEN-LAST:event_cmbNivelActionPerformed
-
     private void txtCajaDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaDNIKeyTyped
         LogicTools.setOnlyNumbers(evt, txtCajaDNI, 8);
     }//GEN-LAST:event_txtCajaDNIKeyTyped
@@ -444,16 +383,12 @@ public class FrmVisualizarDocente extends javax.swing.JFrame {
     private javax.swing.JPanel PnlCeleste;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnVerAlumnos;
-    private javax.swing.JComboBox<String> cmbCursos;
-    private javax.swing.JComboBox<String> cmbNivel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblDNI;

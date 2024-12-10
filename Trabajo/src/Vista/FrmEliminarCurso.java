@@ -6,9 +6,9 @@ import Tools.IconTools;
 import Tools.LogicTools;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-public class FrmEliminarDocente extends javax.swing.JFrame {
+public class FrmEliminarCurso extends javax.swing.JFrame {
     
-    public FrmEliminarDocente() {
+    public FrmEliminarCurso() {
         initComponents();
         LogicTools.styleMainFrame(this);
 
@@ -51,7 +51,7 @@ public class FrmEliminarDocente extends javax.swing.JFrame {
         lblCerrar = new javax.swing.JLabel();
         lblTexto = new javax.swing.JLabel();
         txtCajaCodigo = new javax.swing.JTextField();
-        btnEliminarDocente = new javax.swing.JButton();
+        btnEliminarCurso = new javax.swing.JButton();
         pnlFondo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,7 +64,7 @@ public class FrmEliminarDocente extends javax.swing.JFrame {
         LblOpcion.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         LblOpcion.setForeground(new java.awt.Color(255, 255, 255));
         LblOpcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblOpcion.setText("ELIMINAR DOCENTE");
+        LblOpcion.setText("ELIMINAR CURSO");
 
         lblMainIcon.setBackground(new java.awt.Color(204, 255, 204));
         lblMainIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,7 +105,7 @@ public class FrmEliminarDocente extends javax.swing.JFrame {
         lblTexto.setFont(new java.awt.Font("Consolas", 1, 22)); // NOI18N
         lblTexto.setForeground(new java.awt.Color(0, 0, 0));
         lblTexto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTexto.setText("Ingresa Código del DOCENTE a eliminar:");
+        lblTexto.setText("Ingresa Código del CURSO a eliminar:");
 
         txtCajaCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCajaCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -119,19 +119,19 @@ public class FrmEliminarDocente extends javax.swing.JFrame {
             }
         });
 
-        btnEliminarDocente.setBackground(new java.awt.Color(163, 156, 218));
-        btnEliminarDocente.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
-        btnEliminarDocente.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarDocente.setText("ELIMINAR DOCENTE");
-        btnEliminarDocente.setToolTipText("");
-        btnEliminarDocente.setActionCommand("Buscar");
-        btnEliminarDocente.setAlignmentY(0.0F);
-        btnEliminarDocente.setBorder(null);
-        btnEliminarDocente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEliminarDocente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnEliminarDocente.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarCurso.setBackground(new java.awt.Color(163, 156, 218));
+        btnEliminarCurso.setFont(new java.awt.Font("Carlito", 1, 36)); // NOI18N
+        btnEliminarCurso.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarCurso.setText("ELIMINAR CURSO");
+        btnEliminarCurso.setToolTipText("");
+        btnEliminarCurso.setActionCommand("Buscar");
+        btnEliminarCurso.setAlignmentY(0.0F);
+        btnEliminarCurso.setBorder(null);
+        btnEliminarCurso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEliminarCurso.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEliminarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarDocenteActionPerformed(evt);
+                btnEliminarCursoActionPerformed(evt);
             }
         });
 
@@ -143,8 +143,8 @@ public class FrmEliminarDocente extends javax.swing.JFrame {
             .addGroup(PnlPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                    .addComponent(btnEliminarDocente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                    .addComponent(btnEliminarCurso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(PnlPrincipalLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
@@ -160,7 +160,7 @@ public class FrmEliminarDocente extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(txtCajaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEliminarDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -206,34 +206,37 @@ public class FrmEliminarDocente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCajaCodigoActionPerformed
 
     private void txtCajaCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCajaCodigoKeyTyped
-        LogicTools.setMaxSize(evt,txtCajaCodigo,8);
+        LogicTools.setMaxSize(evt,txtCajaCodigo,4);
     }//GEN-LAST:event_txtCajaCodigoKeyTyped
 
-    private void btnEliminarDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDocenteActionPerformed
+    private void btnEliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCursoActionPerformed
         try {
-            if (txtCajaCodigo.getText().length()==8) {
-            String dni=DataController.docenteController.buscarDocente(txtCajaCodigo.getText()).getDni();
-            if (DataController.docenteController.buscarDocente(txtCajaCodigo.getText())!=null) {
-                DataController.docenteController.eliminarDocente(dni);
-                LogicTools.sendMessage("Docente Eliminado Correctamente");
-                DataTools.writeDocData(DataController.docenteController);
-                setVisible(false);
-                dispose();
-            }else{
-                LogicTools.sendMessage("El DNI ingresado no es valido");
+            if (txtCajaCodigo.getText().length()==4) {
+            String codigo=txtCajaCodigo.getText().toUpperCase();
+                if (DataController.cursoController.buscarCurso(codigo)!=null) {
+                    DataController.cursoController.eliminarCurso(codigo);
+                    LogicTools.sendMessage("Curso Eliminado Correctamente");
+                    DataTools.writeDocData(DataController.cursoController);
+                    
+                    DataController.inicializarDatos();
+                    
+                    setVisible(false);
+                    dispose();
+                }else{
+                    LogicTools.sendMessage("El Codigo ingresado no es valido");
+                }
             }
-        }
         } catch (Exception e) {
-            LogicTools.sendMessage("Docente no existente");
+            LogicTools.sendMessage("Curso no existente");
             setVisible(false);
         }
-    }//GEN-LAST:event_btnEliminarDocenteActionPerformed
+    }//GEN-LAST:event_btnEliminarCursoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblOpcion;
     private javax.swing.JPanel PnlCeleste;
     private javax.swing.JPanel PnlPrincipal;
-    private javax.swing.JButton btnEliminarDocente;
+    private javax.swing.JButton btnEliminarCurso;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblMainIcon;
     private javax.swing.JLabel lblTexto;

@@ -9,8 +9,10 @@ public class FrmMenuCursos extends javax.swing.JFrame {
 
     private final String urlAgregarCurso1="img/addCourse1.png",
             urlAgregarCurso2="img/addCourse2.png",
-            urlAsignar1="img/assignTeacher1.png",
-            urlAsignar2="img/assignTeacher2.png",
+            urlAsignar1="img/assign1.png",
+            urlAsignar2="img/assign2.png",
+            urlEditarCurso1="img/editCourse1.png",
+            urlEditarCurso2="img/editCourse2.png",
             urlEliminarCurso1="img/deleteCourse1.png",
             urlEliminarCurso2="img/deleteCourse2.png",
             urlVisualizarCurso1="img/viewCourse1.png",
@@ -37,13 +39,15 @@ public class FrmMenuCursos extends javax.swing.JFrame {
         IconTools.addIconOption(lblCerrar,"img/return1.png");
         IconTools.addIconOption(LblAgregarCurso,urlAgregarCurso1);
         IconTools.addIconOption(LblEliminarCurso,urlEliminarCurso1);
-        IconTools.addIconOption(lblEditarCurso, urlAsignar1);
+        IconTools.addIconOption(lblAsignarAlumno, urlAsignar1);
         IconTools.addIconOption(lblVisualizarCurso, urlVisualizarCurso1);
+        IconTools.addIconOption(lblEditarCurso, urlEditarCurso1);
         IconTools.addMouseDecoration(lblCerrar, "img/return2.png", "img/return1.png");
-        IconTools.addMouseDecoration(lblEditarCurso,urlAsignar2,urlAsignar1);
+        IconTools.addMouseDecoration(lblAsignarAlumno,urlAsignar2,urlAsignar1);
         IconTools.addMouseDecoration(LblEliminarCurso,urlEliminarCurso2,urlEliminarCurso1);
         IconTools.addMouseDecoration(LblAgregarCurso,urlAgregarCurso2,urlAgregarCurso1);
         IconTools.addMouseDecoration(lblVisualizarCurso,urlVisualizarCurso2,urlVisualizarCurso1);
+        IconTools.addMouseDecoration(lblEditarCurso, urlEditarCurso2,urlEditarCurso1);
     }
     private void logicOption(){
         //Logica para el apartado de Visualizar
@@ -66,7 +70,7 @@ public class FrmMenuCursos extends javax.swing.JFrame {
             }
         });
         
-        //Logica para el apartado de Asignar
+        //Logica para el apartado de Editar
         lblEditarCurso.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -79,7 +83,8 @@ public class FrmMenuCursos extends javax.swing.JFrame {
         LblEliminarCurso.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                
+                FrmEliminarCurso frmEliminarCurso=new FrmEliminarCurso();
+                frmEliminarCurso.setVisible(true);
             }
         });
     }
@@ -109,14 +114,12 @@ public class FrmMenuCursos extends javax.swing.JFrame {
         LblAgregarCurso = new javax.swing.JLabel();
         LblTextAgregar = new javax.swing.JLabel();
         LblTextEliminar = new javax.swing.JLabel();
-        LblTextAgregar1 = new javax.swing.JLabel();
-        LblTextEliminar1 = new javax.swing.JLabel();
         lblEditarCurso = new javax.swing.JLabel();
         LblTextAsignar1 = new javax.swing.JLabel();
-        LblTextAsignar2 = new javax.swing.JLabel();
         lblVisualizarCurso = new javax.swing.JLabel();
         lblTxtVisualizar1 = new javax.swing.JLabel();
-        lblTxtVisualizar2 = new javax.swing.JLabel();
+        lblAsignarAlumno = new javax.swing.JLabel();
+        lblTextAsignarAlumno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -171,51 +174,39 @@ public class FrmMenuCursos extends javax.swing.JFrame {
         LblAgregarCurso.setBackground(new java.awt.Color(204, 255, 204));
         LblAgregarCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        LblTextAgregar.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LblTextAgregar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         LblTextAgregar.setForeground(new java.awt.Color(102, 102, 102));
         LblTextAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTextAgregar.setText("Agregar");
 
-        LblTextEliminar.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LblTextEliminar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         LblTextEliminar.setForeground(new java.awt.Color(102, 102, 102));
         LblTextEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTextEliminar.setText("Eliminar");
 
-        LblTextAgregar1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        LblTextAgregar1.setForeground(new java.awt.Color(102, 102, 102));
-        LblTextAgregar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTextAgregar1.setText("Curso");
-
-        LblTextEliminar1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        LblTextEliminar1.setForeground(new java.awt.Color(102, 102, 102));
-        LblTextEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTextEliminar1.setText("Curso");
-
         lblEditarCurso.setBackground(new java.awt.Color(204, 255, 204));
         lblEditarCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        LblTextAsignar1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        LblTextAsignar1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         LblTextAsignar1.setForeground(new java.awt.Color(102, 102, 102));
         LblTextAsignar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblTextAsignar1.setText("Editar");
 
-        LblTextAsignar2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        LblTextAsignar2.setForeground(new java.awt.Color(102, 102, 102));
-        LblTextAsignar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        LblTextAsignar2.setText("Curso");
-
         lblVisualizarCurso.setBackground(new java.awt.Color(204, 255, 204));
         lblVisualizarCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        lblTxtVisualizar1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        lblTxtVisualizar1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTxtVisualizar1.setForeground(new java.awt.Color(102, 102, 102));
         lblTxtVisualizar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTxtVisualizar1.setText("Vizualizar");
 
-        lblTxtVisualizar2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        lblTxtVisualizar2.setForeground(new java.awt.Color(102, 102, 102));
-        lblTxtVisualizar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTxtVisualizar2.setText("Cursos");
+        lblAsignarAlumno.setBackground(new java.awt.Color(204, 255, 204));
+        lblAsignarAlumno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        lblTextAsignarAlumno.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblTextAsignarAlumno.setForeground(new java.awt.Color(102, 102, 102));
+        lblTextAsignarAlumno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTextAsignarAlumno.setText("Asignar A.");
 
         javax.swing.GroupLayout PnlPrincipalLayout = new javax.swing.GroupLayout(PnlPrincipal);
         PnlPrincipal.setLayout(PnlPrincipalLayout);
@@ -223,61 +214,59 @@ public class FrmMenuCursos extends javax.swing.JFrame {
             PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PnlCeleste, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, Short.MAX_VALUE)
             .addGroup(PnlPrincipalLayout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(278, 278, 278)
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTxtVisualizar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTxtVisualizar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblVisualizarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                    .addComponent(LblTextEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LblEliminarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(167, 167, 167)
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LblTextAgregar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblTextAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblAgregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTextAsignarAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAsignarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PnlPrincipalLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblVisualizarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTxtVisualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(152, 152, 152)
+                .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LblAgregarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LblTextAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LblTextAsignar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LblTextAsignar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(LblEliminarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LblTextEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(LblTextEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(100, 100, 100))
+                    .addComponent(lblEditarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LblTextAsignar1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(130, 130, 130))
         );
         PnlPrincipalLayout.setVerticalGroup(
             PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlPrincipalLayout.createSequentialGroup()
                 .addComponent(PnlCeleste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(PnlPrincipalLayout.createSequentialGroup()
-                            .addComponent(LblEliminarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(LblTextEliminar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(LblTextEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(PnlPrincipalLayout.createSequentialGroup()
-                            .addComponent(lblEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(LblTextAsignar1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(LblTextAsignar2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PnlPrincipalLayout.createSequentialGroup()
-                        .addComponent(lblVisualizarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PnlPrincipalLayout.createSequentialGroup()
+                        .addComponent(lblVisualizarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTxtVisualizar1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTxtVisualizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PnlPrincipalLayout.createSequentialGroup()
-                        .addComponent(LblAgregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTxtVisualizar1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PnlPrincipalLayout.createSequentialGroup()
+                        .addComponent(LblAgregarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LblTextAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LblTextAgregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addComponent(LblTextAgregar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PnlPrincipalLayout.createSequentialGroup()
+                        .addComponent(lblEditarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LblTextAsignar1)))
+                .addGap(37, 37, 37)
+                .addGroup(PnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PnlPrincipalLayout.createSequentialGroup()
+                        .addComponent(LblEliminarCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(LblTextEliminar))
+                    .addGroup(PnlPrincipalLayout.createSequentialGroup()
+                        .addComponent(lblAsignarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(lblTextAsignarAlumno)))
+                .addGap(73, 73, 73))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -299,18 +288,16 @@ public class FrmMenuCursos extends javax.swing.JFrame {
     private javax.swing.JLabel LblEliminarCurso;
     private javax.swing.JLabel LblOpcion;
     private javax.swing.JLabel LblTextAgregar;
-    private javax.swing.JLabel LblTextAgregar1;
     private javax.swing.JLabel LblTextAsignar1;
-    private javax.swing.JLabel LblTextAsignar2;
     private javax.swing.JLabel LblTextEliminar;
-    private javax.swing.JLabel LblTextEliminar1;
     private javax.swing.JPanel PnlCeleste;
     private javax.swing.JPanel PnlPrincipal;
+    private javax.swing.JLabel lblAsignarAlumno;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblEditarCurso;
     private javax.swing.JLabel lblMainIcon;
+    private javax.swing.JLabel lblTextAsignarAlumno;
     private javax.swing.JLabel lblTxtVisualizar1;
-    private javax.swing.JLabel lblTxtVisualizar2;
     private javax.swing.JLabel lblVisualizarCurso;
     // End of variables declaration//GEN-END:variables
 }
